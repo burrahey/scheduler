@@ -1,16 +1,1 @@
-<div>
-  <% @employees.each do |employee| %>
-  <strong>Name: <%= employee.first_name %> <%= employee.last_name %></strong>
-  <ul>
-    <li>
-      Email: <%= employee.email %>
-    </li>
-    <li>
-      Date Hired: <%= employee.date_hired.strftime("%B %e, %Y") %>
-    </li>
-    <li>
-      Role: <%= employee.role %>
-    </li>
-  </ul>
-  <% end %>
-</div>
+<%= render partial: "employee", collection: @employees %>
