@@ -2,13 +2,15 @@
   <strong>Name: <%= employee.first_name %> <%= employee.last_name %></strong>
   <ul>
     <li>
-      Email: <%= employee.email %>
+      <strong>Email: </strong><%= employee.email %>
     </li>
     <li>
-      Date Hired: <%= employee.date_hired.strftime("%B %e, %Y") %>
+      <strong>Date Hired: </strong><%= employee.date_hired.strftime("%B %e, %Y") %>
     </li>
     <li>
-      Role: <%= employee.role %>
+      <strong>Role: </strong><%= employee.role %>
     </li>
   </ul>
+  <%= link_to "Edit", edit_admin_employee_path(employee) %> | <%= link_to "Delete", admin_employee_path(employee), method: 'delete' %>
+  <br /><br />
 </div>
