@@ -17,16 +17,16 @@ To do:
 If you have time:
 - add permissions for admins. disallow everything by non-logged in users
 
-Schedule
-has many shifts
-has many channels, through shifts
-has many employees, through shifts
-published: true/false (publishing a schedule makes all its shifts created thus far public)
-
-Shift - must be unique if for the same employee and on the same start_date_time
+Shift
+- must be unique if for the same employee and on the same start_date_time
+- shift date cannot be before employee's date hired
 belongs_to employee
 belongs_to schedule
 belongs_to channel
+columns:
+channel_id
+schedule_id
+employee_id
 published: true/false
 start_date_time - cannot be empty
 end_date_time - cannot be empty
@@ -41,12 +41,20 @@ password - cannot be empty
 date_hired
 role (associate, supervisor, admin, etc) using the automatic ruby mapper thing
 
+Schedule
+has many shifts
+has many channels, through shifts
+has many employees, through shifts
+published: true/false (publishing a schedule makes all its shifts created thus far public)
+
 Channel
 type = (phone, email, chat, messaging, PTO, supervisor, comp day)
 
 permissions
 associates can add/edit/delete shifts for themselves on an existing schedule
+associates can edit themselves
 supervisors can add/edit/delete shifts for everyone on an existing schedule
+supervisors can edit/delete employees
 
 scope method
 employee's shifts this week
