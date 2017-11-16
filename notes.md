@@ -1,10 +1,6 @@
 Notes
 
 To do:
-- Create migrations/models
-- Add validations
-- Check to make sure all models work
-- Build login via regular methods and oauth
 - Create employees via db:seed, allow others to create employees, with shifts
 - Allow all shifts to be "published"
 - Build scope method to view associate level employees only
@@ -19,37 +15,14 @@ If you have time:
 - add permissions for admins. disallow everything by non-logged in users
 
 Shift
-- must be unique if for the same employee and on the same start_date_time
 - shift date cannot be before employee's date hired
-belongs_to employee
-belongs_to schedule
-belongs_to channel
-columns:
-start_date_time - cannot be empty
-end_date_time - cannot be empty
-published: true/false
-channel_id
-employee_id
-schedule_id
 
 Employee
-Devise's user models
 has_many shifts
 has_many schedules through shifts
-first_name
-last name
-email - cannot be empty, must be unique
-password - cannot be empty
-date_hired
-role (associate, supervisor, admin, etc) using enum http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html
 
 Schedule
-has many shifts
-has many employees, through shifts
 published: true/false (publishing a schedule makes all its shifts created thus far public)
-
-Channel
-type = (phone, email, chat, messaging, PTO, supervisor, comp day)
 
 permissions
 associates can add/edit/delete shifts for themselves on an existing schedule
