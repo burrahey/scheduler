@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def home
-    render 'hey'
+    render body: "raw"
   end
 end
