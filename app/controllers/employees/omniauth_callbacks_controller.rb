@@ -5,6 +5,10 @@ class Employees::OmniauthCallbacksController < Devise::OmniauthCallbacksControll
   # You should also create an action method in this controller like this:
   # def twitter
   # end
+  def facebook
+    @employee = Employee.from_omniauth(request.env["omniauth.auth"])
+    sign_in_and_redirect @employee
+  end
 
   # More info at:
   # https://github.com/plataformatec/devise#omniauth

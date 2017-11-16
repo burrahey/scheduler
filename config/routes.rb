@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :employees
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "welcome#home"
+  devise_for :employees, :controllers => { :omniauth_callbacks => "employees/omniauth_callbacks" }
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

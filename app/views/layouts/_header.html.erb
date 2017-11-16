@@ -1,5 +1,5 @@
 <% if employee_signed_in? %>
-  <%= link_to "Sign Out", destroy_employee_session, method: 'delete' %>
+  <%= link_to "Sign Out", destroy_employee_session_path, method: 'delete' %>
 <% else %>
   <%= link_to "Sign Up", new_employee_registration_path %> | <%= link_to "Sign In", new_employee_session_path %>
 <% end %>
