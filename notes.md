@@ -24,12 +24,12 @@ belongs_to employee
 belongs_to schedule
 belongs_to channel
 columns:
-channel_id
-schedule_id
-employee_id
-published: true/false
 start_date_time - cannot be empty
 end_date_time - cannot be empty
+published: true/false
+channel_id
+employee_id
+schedule_id
 
 Employee
 Devise's user models
@@ -39,11 +39,10 @@ name - cannot be empty
 email - cannot be empty, must be unique
 password - cannot be empty
 date_hired
-role (associate, supervisor, admin, etc) using the automatic ruby mapper thing
+role (associate, supervisor, admin, etc) using enum http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html
 
 Schedule
 has many shifts
-has many channels, through shifts
 has many employees, through shifts
 published: true/false (publishing a schedule makes all its shifts created thus far public)
 
