@@ -6,7 +6,7 @@
       Email: <%= employee.email %>
     </li>
     <li>
-      Date Hired: <%= employee.date_hired %>
+      Date Hired: <%= employee.date_hired.strftime("%B %e, %Y") %>
     </li>
     <li>
       Role: <%= employee.role %>
