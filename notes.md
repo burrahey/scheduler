@@ -1,7 +1,7 @@
 Notes
 
 To do:
-- Create employees via db:seed, allow others to create employees, with shifts
+- allow others to create employees, with shifts
 - Allow all shifts to be "published"
 - Build scope method to view associate level employees only
 - allow for a new schedule to be created (has many through) - should be for a week only, assigns all employees a shift
@@ -10,7 +10,8 @@ To do:
   * assign a morning / afternoon chat shift, circling through associates evenly. assign phones to all the rest. repeat until completed.
   * assign supervisor roles to admins
 - display the schedule somehow nicely per day
-
+- get rid of all the extra devise files
+- get rid of all the extra devise links
 If you have time:
 - add permissions for admins. disallow everything by non-logged in users
 
