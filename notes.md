@@ -35,7 +35,8 @@ Employee
 Devise's user models
 has_many shifts
 has_many schedules through shifts
-name - cannot be empty
+first_name
+last name
 email - cannot be empty, must be unique
 password - cannot be empty
 date_hired

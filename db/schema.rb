@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20171116002453) do
   create_table "shifts", force: :cascade do |t|
     t.datetime "start_date_time"
     t.datetime "end_date_time"
-    t.boolean "published"
+    t.boolean "published", default: true
     t.integer "channel_id"
     t.integer "employee_id"
     t.integer "schedule_id"
