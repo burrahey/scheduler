@@ -7,7 +7,7 @@ class DeviseCreateEmployees < ActiveRecord::Migration[5.1]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.datetime :date_hired
-      t.integer :role
+      t.integer :role, default: "associate"
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
