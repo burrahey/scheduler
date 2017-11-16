@@ -1,4 +1,4 @@
-class Employees::EmployeesController < ApplicationController
+class Admin::EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   def index
     @employees = Employee.all
@@ -17,7 +17,7 @@ class Employees::EmployeesController < ApplicationController
 
   def destroy
     #build this out
-    redirect_to admin_employees_path
+    redirect_to employees_path
   end
 
   def edit
