@@ -3,7 +3,8 @@ Notes
 To do:
 - Create migrations/models
 - Add validations
-- Check to make sure all models work (including login via regular methods and oauth)
+- Check to make sure all models work
+- Build login via regular methods and oauth
 - Create employees via db:seed, allow others to create employees, with shifts
 - Allow all shifts to be "published"
 - Build scope method to view associate level employees only
