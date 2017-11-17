@@ -1,6 +1,6 @@
 class Admin::ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
-  before_action :set_employee, only: :create
+  before_action :set_employee, only: [:create, :update, :destroy]
   def index
 
   end
@@ -20,9 +20,18 @@ class Admin::ShiftsController < ApplicationController
   end
 
   def update
+    @shift.assign_attributes(shift_params)
+
+    if @shift.save
+      redirect_to admin_employee_shift_path(@employee, @shift)
+    else
+      render 'admin/shifts/edit'
+    end
   end
 
   def destroy
+    @shift.destroy
+    redirect_to admin_employee_path(@employee)
   end
 
   def show

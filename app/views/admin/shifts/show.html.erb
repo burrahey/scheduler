@@ -1,1 +1,5 @@
-<%= render "shift", shift: @shift %>
+<div>
+  <%= render "shift", shift: @shift %>
+</div>
+
+<%= link_to "Go back to employee page", admin_employee_path(@shift.employee) %>
