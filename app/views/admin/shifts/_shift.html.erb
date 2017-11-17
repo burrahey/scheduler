@@ -1,13 +1,2 @@
-<div>
-  <strong>Date: <%= shift.date %> <%= " || PUBLISHED" if shift.published %> </strong>
-  <ul>
-    <li>
-      <strong>Start Time: </strong><%= shift.start_time.strftime("%l:%M %P") %>
-    </li>
-    <li>
-      <strong>End Time: </strong><%= shift.end_time.strftime("%l:%M %P") %>
-    </li>
-  </ul>
-  <%= link_to "Edit", edit_admin_employee_shift_path(shift) %> | <%= link_to "Delete", admin_employee_shift_path(shift), method: 'delete' %>
-  <br /><br />
-</div>
+<strong> <%= "PUBLISHED | " if shift.published %><%= shift.start_time.strftime("%l:%M %P") %> - <%= shift.end_time.strftime("%l:%M %P") %> on <%= shift.date %> </strong> -- <%= link_to "Edit", edit_admin_employee_shift_path(shift) %> | <%= link_to "Delete", admin_employee_shift_path(shift), method: 'delete' %>
+<br />
