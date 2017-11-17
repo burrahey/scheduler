@@ -1,6 +1,7 @@
 class Admin::ShiftsController < ApplicationController
-
+  before_action :set_employee, only: [:show, :edit, :update, :destroy]
   def index
+
   end
 
   def new
@@ -20,4 +21,10 @@ class Admin::ShiftsController < ApplicationController
 
   def edit
   end
+
+  private
+  def set_employee
+    @employee = Employee.find_by(id: params[:employee_id])
+  end
+
 end
