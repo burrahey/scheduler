@@ -11,9 +11,19 @@ class Admin::EmployeesController < ApplicationController
 
   def create
     binding.pry
-    @employee = Employee.new(employee_params)
+
+    @employee = Employee.new
+    @employee.first_name = employee_params[:first_name]
+    @employee.last_name = employee_params[:last_name]
+    @employee.email = employee_params[:email]
+    @employee.date_hired = employee_params[:date_hired]
+    @employee.role = employee_params[:role]
+    @employee.password = employee_params[:password]
+
     if @employee.save
       #make sure shift saves also - otherwise go to employees/:id/shift/now
+      @shift = @employee.shifts.build(published: employee_params[:shift][:published], date: employee_params[:shift][:date], start_time: employee_params[:shift][:start_time], end_time: employee_params[:shift][:end_time], channel_id: employee_params[:shift][:channels][:channel])
+
       redirect_to admin_employee_path(@employee)
     else
       render 'admin/employees/new'
@@ -32,16 +42,6 @@ class Admin::EmployeesController < ApplicationController
   end
 
   def update
-    @employee = Employee.new
-    @employee.first_name = employee_params[:first_name]
-    @employee.last_name = employee_params[:last_name]
-    @employee.email = employee_params[:email]
-    @employee.date_hired = employee_params[:date_hired]
-    @employee.role = employee_params[:role]
-    @employee.password = employee_params[:password]
-
-    @shift = @employee.shifts.build(published: employee_params[:shift][:published], start_date_time: employee_params[:shift][:start_date_time], end_date_time: employee_params[:shift][:end_date_time], channel_id: employee_params[:shift][:channels][:channel])
-
     if @employee.save
       redirect_to admin_employee_path(@employee)
     else
@@ -57,7 +57,7 @@ class Admin::EmployeesController < ApplicationController
 
   def employee_params
     #need to modify to accept params for shifts too
-     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password, :shift => [:published, :channels => [:channel]])
+     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password, :shift => [:published, :date, :start_time, :end_time, :channels => [:channel]])
   end
 
 end

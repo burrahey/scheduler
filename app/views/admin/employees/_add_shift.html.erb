@@ -4,8 +4,11 @@
     <%= c.label :channel %>
     <%= c.select(:channel, Channel.all.map {|channel| [channel.name ,channel.id]}) %> <br />
   <% end %>
-  Date: <%= date_field_tag "Date"%><br />
-  Start Time: <%= time_field_tag "Start Time"%><br />
-  End Time: <%= time_field_tag "End Time"%><br />
+  <%= t.label :date %>
+  <%= t.date_field :date %> <br />
+  <%= t.label :start_time %>
+  <%= t.time_field :start_time %><br />
+  <%= t.label :end_time %>
+  <%= t.time_field :end_time %> <br />
   Publish Shift? <%= t.check_box :published %><br /> <br />
 <% end %>
