@@ -1,36 +1,21 @@
-<%= check_and_display_errors(@employee) %>
+<div class="field_with_errors">
+  <%= check_and_display_errors(@employee) %>
+</div>
+<br />
+<%= f.label :first_name %>
+<%= f.text_field :first_name %><br />
 
-<%= form_for [:admin, @employee] do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br />
+<%= f.label :last_name %>
+<%= f.text_field :last_name %> <br />
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %> <br />
+<%= f.label :email %>
+<%= f.email_field :email %> <br />
 
-  <%= f.label :email %>
-  <%= f.email_field :email %> <br />
+<%= f.label :password %>
+<%= f.password_field :password %> <br />
 
-  <%= f.label :password %>
-  <%= f.password_field :password %> <br />
+<%= f.label :date_hired %>
+<%= f.date_field :date_hired %> <br />
 
-  <%= f.label :date_hired %>
-  <%= f.date_field :date_hired %> <br />
-
-  <%= f.label :role %>
-  <%= f.select(:role, Employee.roles.keys.map {|role| [role.titleize,role]}) %> <br />
-
-  <h5>Optionally, you can add a shift:</h5>
-  <%= f.fields_for(:shifts) do |t| %>
-    Date: <%= date_field_tag "Date"%><br />
-    Start Time: <%= time_field_tag "Start Time"%><br />
-    End Time: <%= time_field_tag "End Time"%><br />
-      <%= t.fields_for(:channels) do |c| %>
-        <%= c.label :channel %>
-        <%= c.select(:channel, Channel.all.map {|channel| [channel.name ,channel.id]}) %> <br />
-      <% end %>
-    <%= t.label :published %>
-    <%= t.check_box :published %><br /> <br />
-
-  <% end %>
-  <%= f.submit %>
-<% end %>
+<%= f.label :role %>
+<%= f.select(:role, Employee.roles.keys.map {|role| [role.titleize,role]}) %> <br />
