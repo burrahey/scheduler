@@ -6,7 +6,7 @@ class Admin::EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    @shift = Shift.new
+    @shift = @employee.shifts.build
   end
 
   def create
@@ -18,8 +18,7 @@ class Admin::EmployeesController < ApplicationController
       if @shift.save
         redirect_to admin_employee_path(@employee)
       else
-        ###need to build this outttttt!!!!!
-        redirect_to new_admin_employee_shift_path(@employee)
+        redirect_to new_admin_employee_shift_path(@employee), alert: "Failed to add a shift. Try again!"
       end
     else
       render 'admin/employees/new'

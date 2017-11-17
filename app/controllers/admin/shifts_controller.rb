@@ -1,5 +1,8 @@
 class Admin::ShiftsController < ApplicationController
 
+  def index
+  end
+
   def new
   end
 
