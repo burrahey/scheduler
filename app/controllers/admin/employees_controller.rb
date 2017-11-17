@@ -11,10 +11,10 @@ class Admin::EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new_from_params(employee_params)
-
+    binding.pry
     if @employee.save
       if employee_params[:shift].values.any? {|answers| !answers.empty?}
-        @shift = @employee.shifts.build(employee_params[:shift]) 
+        @shift = @employee.shifts.build(employee_params[:shift])
         if !@shift.save
           redirect_to root_path, alert: "Failed to add a shift. Try again!"
         end
