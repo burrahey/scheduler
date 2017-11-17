@@ -1,8 +1,9 @@
 class Admin::ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
-  before_action :set_employee, only: [:create, :update, :destroy]
+  before_action :set_employee, only: [:create, :update, :destroy, :index]
+  
   def index
-
+    @shifts = @employee.shifts
   end
 
   def new
