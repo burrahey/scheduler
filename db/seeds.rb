@@ -5,13 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-phone = Channel.create(name: "Phone")
-email = Channel.create(name: "Email")
-chat = Channel.create(name: "Chat")
-messaging = Channel.create(name: "Messaging")
-pto = Channel.create(name: "PTO")
-comp_day = Channel.create(name: "Comp Day")
-supervisor = Channel.create(name: "Supervisor")
 
 15.times do
   Employee.create(

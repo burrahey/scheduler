@@ -10,13 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117022447) do
-
-  create_table "channels", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20171117192757) do
 
   create_table "employees", force: :cascade do |t|
     t.string "first_name"
@@ -51,7 +45,6 @@ ActiveRecord::Schema.define(version: 20171117022447) do
 
   create_table "shifts", force: :cascade do |t|
     t.boolean "published", default: true
-    t.integer "channel_id"
     t.integer "employee_id"
     t.integer "schedule_id"
     t.datetime "created_at", null: false
@@ -59,7 +52,6 @@ ActiveRecord::Schema.define(version: 20171117022447) do
     t.date "date"
     t.time "start_time"
     t.time "end_time"
-    t.index ["channel_id"], name: "index_shifts_on_channel_id"
     t.index ["employee_id"], name: "index_shifts_on_employee_id"
     t.index ["schedule_id"], name: "index_shifts_on_schedule_id"
   end

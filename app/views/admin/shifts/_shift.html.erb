@@ -7,9 +7,6 @@
     <li>
       <strong>End Time: </strong><%= shift.end_time.strftime("%l:%M %P") %>
     </li>
-    <li>
-      <strong>Channel: </strong><%= shift.channel.name %>
-    </li>
   </ul>
   <%= link_to "Edit", edit_admin_employee_shift_path(shift) %> | <%= link_to "Delete", admin_employee_shift_path(shift), method: 'delete' %>
   <br /><br />

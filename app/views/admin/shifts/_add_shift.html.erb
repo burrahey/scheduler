@@ -1,10 +1,6 @@
 <%= check_and_display_errors(@shift) %>
 <h5>Optionally, you can add a shift:</h5>
 <%= f.fields_for(@shift) do |t| %>
-  <%= t.fields_for(:channels) do |c| %>
-    <%= c.label :channel %>
-    <%= c.select(:channel, Channel.all.map {|channel| [channel.name, channel.id]}, :include_blank => true) %> <br />
-  <% end %>
   <%= t.label :date %>
   <%= t.date_field :date %> <br />
   <%= t.label :start_time %>
