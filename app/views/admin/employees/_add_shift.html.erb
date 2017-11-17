@@ -1,3 +1,4 @@
+<%= check_and_display_errors(@shift) %>
 <h5>Optionally, you can add a shift:</h5>
 <%= f.fields_for(@shift) do |t| %>
   <%= t.fields_for(:channels) do |c| %>
