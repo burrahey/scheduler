@@ -30,8 +30,8 @@ class Admin::EmployeesController < ApplicationController
   end
 
   def destroy
-    #build this out
-    redirect_to employees_path
+    @employee.destroy
+    redirect_to admin_employees_path
   end
 
   def edit
