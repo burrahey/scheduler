@@ -78,3 +78,8 @@ div.header-nav {
   color: green;
   font: bold;
 }
+
+.field_with_errors {
+  display: inline-block;
+  background-color: cyan;
+}
