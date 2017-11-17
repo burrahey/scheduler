@@ -75,6 +75,6 @@ div.header-nav {
 }
 
 #flash_error, #flash_notice, #flash_alert  {
-  color: cyan;
+  color: green;
   font: bold;
 }

@@ -24,7 +24,13 @@ class Admin::EmployeesController < ApplicationController
   end
 
   def update
-    raise params.inspect
+    @employee.assign_attributes(employee_params)
+
+    if @employee.save
+      redirect_to admin_employee_path(@employee)
+    else
+      render 'admin/employees/edit'
+    end
   end
 
 
@@ -35,7 +41,7 @@ class Admin::EmployeesController < ApplicationController
 
   def employee_params
     #need to modify to accept params for shifts too
-     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role)
+     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password)
   end
 
 end
