@@ -46,6 +46,11 @@ class Admin::EmployeesController < ApplicationController
     end
   end
 
+  def associates
+    @employees = Employee.associates
+    render 'admin/employees/index'
+  end
+
 
   private
   def set_employee

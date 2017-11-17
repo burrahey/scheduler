@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/admin/employees/associates', to: 'admin/employees#associates'
+
 end

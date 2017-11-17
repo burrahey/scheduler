@@ -17,8 +17,6 @@ nested employee form with shifts
 - get rid of all the extra devise files
 - get rid of all the extra devise links
 
-maybe later:
-
 permissions
 associates can add/edit/delete shifts for themselves on an existing schedule
 associates can edit themselves
@@ -28,7 +26,7 @@ supervisors can view unpublished schedules
 associates can only view published schedules
 
 scope method
-employee's shifts this week
+employee's shifts this week OR view only associates
 
 - add permissions for admins. disallow everything by non-logged in users
 
