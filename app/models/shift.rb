@@ -4,4 +4,5 @@ class Shift < ApplicationRecord
   belongs_to :channel
   belongs_to :employee, required: false
   belongs_to :schedule, required: false
+
 end

@@ -22,5 +22,19 @@ class Employee < ApplicationRecord
     end
   end
 
+  def self.new_from_params(employee_params)
+    self.new.tap do |employee|
+      @employee.first_name = employee_params[:first_name]
+      @employee.last_name = employee_params[:last_name]
+      @employee.email = employee_params[:email]
+      @employee.date_hired = employee_params[:date_hired]
+      @employee.role = employee_params[:role]
+      @employee.password = employee_params[:password]
+    end
+  end
+
+  def build_a_shift
+  end
+
 
 end

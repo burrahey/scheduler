@@ -10,24 +10,16 @@ class Admin::EmployeesController < ApplicationController
   end
 
   def create
-    binding.pry
-
-    @employee = Employee.new
-    @employee.first_name = employee_params[:first_name]
-    @employee.last_name = employee_params[:last_name]
-    @employee.email = employee_params[:email]
-    @employee.date_hired = employee_params[:date_hired]
-    @employee.role = employee_params[:role]
-    @employee.password = employee_params[:password]
+    @employee = Employee.new_from_params(employee_params)
 
     if @employee.save
-      @shift = @employee.shifts.build(published: employee_params[:shift][:published], date: employee_params[:shift][:date], start_time: employee_params[:shift][:start_time], end_time: employee_params[:shift][:end_time], channel_id: employee_params[:shift][:channels][:channel])
+      @shift = @employee.build_a_shift(employee_params[:shift])
 
       if @shift.save
         redirect_to admin_employee_path(@employee)
       else
-        #make sure shift saves also - otherwise go to employees/:id/shift/now
-        redirect_to root_path
+        ###need to build this outttttt!!!!!
+        redirect_to new_admin_employee_shift_path(@employee)
       end
     else
       render 'admin/employees/new'
