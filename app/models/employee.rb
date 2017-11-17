@@ -33,7 +33,9 @@ class Employee < ApplicationRecord
     end
   end
 
-  def build_a_shift
+  def build_a_shift(shift_params)
+    self.shifts.build(published: shift_params[:published],
+    date: shift_params[:date], start_time: shift_params[:start_time], end_time: shift_params[:end_time], channel_id: shift_params[:channels][:channel])
   end
 
 
