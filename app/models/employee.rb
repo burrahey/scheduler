@@ -38,5 +38,15 @@ class Employee < ApplicationRecord
     date: shift_params[:date], start_time: shift_params[:start_time], end_time: shift_params[:end_time], channel_id: shift_params[:channels][:channel])
   end
 
+  def update_from_params(employee_params)
+      self.first_name = employee_params[:first_name]
+      self.last_name = employee_params[:last_name]
+      self.email = employee_params[:email]
+      self.date_hired = employee_params[:date_hired]
+      self.role = employee_params[:role]
+      self.password = employee_params[:password] if !employee_params[:password].blank?
+      self
+  end
+
 
 end

@@ -3,7 +3,7 @@
 <%= f.fields_for(@shift) do |t| %>
   <%= t.fields_for(:channels) do |c| %>
     <%= c.label :channel %>
-    <%= c.select(:channel, Channel.all.map {|channel| [channel.name ,channel.id]}) %> <br />
+    <%= c.select(:channel, Channel.all.map {|channel| [channel.name ,channel.id]}, :include_blank => true) %> <br />
   <% end %>
   <%= t.label :date %>
   <%= t.date_field :date %> <br />
@@ -12,5 +12,5 @@
   <%= t.label :end_time %>
   <%= t.time_field :end_time %> <br />
   <%= t.hidden_field :employee_id %>
-  Publish Shift? <%= t.check_box :published %><br /> <br />
+  Publish Shift? <%= t.check_box :published, :checked => false %><br /> <br />
 <% end %>
