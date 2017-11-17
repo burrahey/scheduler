@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116025404) do
+ActiveRecord::Schema.define(version: 20171117022447) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
@@ -50,14 +50,15 @@ ActiveRecord::Schema.define(version: 20171116025404) do
   end
 
   create_table "shifts", force: :cascade do |t|
-    t.datetime "start_date_time"
-    t.datetime "end_date_time"
     t.boolean "published", default: true
     t.integer "channel_id"
     t.integer "employee_id"
     t.integer "schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
     t.index ["channel_id"], name: "index_shifts_on_channel_id"
     t.index ["employee_id"], name: "index_shifts_on_employee_id"
     t.index ["schedule_id"], name: "index_shifts_on_schedule_id"
