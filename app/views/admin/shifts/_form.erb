@@ -1,0 +1,8 @@
+<%= check_and_display_errors(@shift) %> <br />
+<%= t.label :date %>
+<%= t.date_field :date %> <br />
+<%= t.label :start_time %>
+<%= t.time_field :start_time %><br />
+<%= t.label :end_time %>
+<%= t.time_field :end_time %> <br />
+Publish Shift? <%= t.check_box :published, :checked => false %><br /> <br />
