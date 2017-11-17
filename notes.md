@@ -1,10 +1,9 @@
 Notes
 
 To do:
-- allow others to create employees, with shifts. create an employee, as well as some shifts for that employee with a custom writer
+
 - can add/edit/delete if you're the employee who owns the shift. can view if you're logged in
 and create  employees/1/shifts/new
-- Include nested resource show or index (URL e.g. users/2/recipes)
 - allow for a new schedule to be created (has many through) - should be for a week only, assigns all employees a shift
 nested employee form with shifts
 - scheduler:
