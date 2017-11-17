@@ -1,12 +1,11 @@
 <h5>Optionally, you can add a shift:</h5>
-<%= f.fields_for(:shifts) do |t| %>
+<%= f.fields_for(@shift) do |t| %>
+  <%= t.fields_for(:channels) do |c| %>
+    <%= c.label :channel %>
+    <%= c.select(:channel, Channel.all.map {|channel| [channel.name ,channel.id]}) %> <br />
+  <% end %>
   Date: <%= date_field_tag "Date"%><br />
   Start Time: <%= time_field_tag "Start Time"%><br />
   End Time: <%= time_field_tag "End Time"%><br />
-    <%= t.fields_for(:channels) do |c| %>
-      <%= c.label :channel %>
-      <%= c.select(:channel, Channel.all.map {|channel| [channel.name ,channel.id]}) %> <br />
-    <% end %>
-  <%= t.label :published %>
-  <%= t.check_box :published %><br /> <br />
+  Publish Shift? <%= t.check_box :published %><br /> <br />
 <% end %>
