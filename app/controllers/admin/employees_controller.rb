@@ -15,10 +15,10 @@ class Admin::EmployeesController < ApplicationController
       if employee_params[:shift].values[1..-1].any? {|answer| !answer.empty?}
         @shift = @employee.shifts.build(employee_params[:shift])
         if !@shift.save
-          redirect_to new_admin_employee_shift_path(@employee, @shift)
+          redirect_to new_admin_employee_shift_path(@employee, @shift), alert: "The employee was saved, but the shift was not. Try adding a shift for this employee below."
         end
       end
-      redirect_to admin_employee_path(@employee)
+      return admin_employee_url(@employee)
     else
       @shift ||= @employee.shifts.build
       render 'admin/employees/new'
