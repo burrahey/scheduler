@@ -5,7 +5,6 @@ To do:
 - can add/edit/delete if you're the employee who owns the shift. can view if you're logged in
 and create  employees/1/shifts/new
 - allow for a new schedule to be created (has many through) - should be for a week only, assigns all employees a shift
-nested employee form with shifts
 - scheduler:
  For each day of the week:
   * assign a morning / afternoon chat shift, circling through associates evenly. assign phones to all the rest. repeat until completed.
@@ -23,9 +22,6 @@ supervisors can add/edit/delete shifts for everyone on an existing schedule
 supervisors can edit/delete employees
 supervisors can view unpublished schedules
 associates can only view published schedules
-
-scope method
-employee's shifts this week OR view only associates
 
 - add permissions for admins. disallow everything by non-logged in users
 

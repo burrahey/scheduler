@@ -11,6 +11,6 @@
       <strong>Role: </strong><%= employee.role %>
     </li>
   </ul>
-  <%= link_to "View", admin_employee_path(employee) %> | <%= link_to "Edit", edit_admin_employee_path(employee) %> | <%= link_to "Delete", admin_employee_path(employee), method: 'delete' %> | <%= link_to "Add a Shift", new_admin_employee_shift_path(employee) %> | <%= link_to "View all Existing Shifts for this Employee", admin_employee_shifts_path(employee) %>
+  <%= link_to "View", admin_employee_path(employee) %> | <%= link_to "Edit", edit_admin_employee_path(employee) %> | <%= link_to "Delete", admin_employee_path(employee), method: 'delete' %> | <%= link_to "Add a Shift", new_admin_employee_shift_path(employee) %> | <%= link_to "View Existing Shifts", admin_employee_shifts_path(employee) %>
   <br /><br />
 </div>

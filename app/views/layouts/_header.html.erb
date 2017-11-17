@@ -4,7 +4,7 @@
   </div>
 <% else %>
   <div>
-    <%= link_to "Sign Up", new_employee_registration_path %> | <%= link_to "Sign In", new_employee_session_path %> | <%= link_to "View All Employees", admin_employees_path %> | <%= link_to "Add a New Employee", new_admin_employee_path %> | <%= link_to "Manage Associates Only", admin_employees_associates_path, method: 'post' %>
+    <%= link_to "Sign Up", new_employee_registration_path %> | <%= link_to "Sign In", new_employee_session_path %> | <%= link_to "Add a New Employee", new_admin_employee_path %> | <%= link_to "View All Employees", admin_employees_path %> | <%= link_to "Manage Associates", admin_employees_associates_path, method: 'post' %>
   </div>
 <% end %>
 <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
