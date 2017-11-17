@@ -1,7 +1,7 @@
 <% if employee_signed_in? %>
   <%= link_to "Sign Out", destroy_employee_session_path, method: 'delete' %>
 <% else %>
-  <%= link_to "Sign Up", new_employee_registration_path %> | <%= link_to "Sign In", new_employee_session_path %> | <%= link_to "Add a New Employee", new_admin_employee_path %>
+  <%= link_to "Sign Up", new_employee_registration_path %> | <%= link_to "Sign In", new_employee_session_path %> | <%= link_to "View All Employees", admin_employees_path %> | <%= link_to "Add a New Employee", new_admin_employee_path %> 
 <% end %>
 <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
 <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>

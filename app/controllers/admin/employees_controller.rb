@@ -15,15 +15,13 @@ class Admin::EmployeesController < ApplicationController
     if @employee.save
       if !employee_params[:shift][:start_time].empty?
         @shift = @employee.build_a_shift(employee_params[:shift])
-        if @shift.save
-          redirect_to admin_employee_path(@employee)
-        else
+        if !@shift.save
           redirect_to new_admin_employee_shift_path(@employee), alert: "Failed to add a shift. Try again!"
         end
       end
       redirect_to admin_employee_path(@employee)
     else
-      @shift = @employee.shifts.build
+      @shift ||= @employee.shifts.build
       render 'admin/employees/new'
     end
   end

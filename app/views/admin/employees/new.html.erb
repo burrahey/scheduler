@@ -1,6 +1,6 @@
 <h2>Add a New Employee:</h2>
 <%= form_for [:admin, @employee] do |f| %>
   <%= render partial: 'form', locals: {employee: @employee, f:f} %>
-  <%= render partial: 'add_shift', locals: {f:f, shift: @shift} %>
+  <%= render partial: 'admin/shifts/add_shift', locals: {f:f, shift: @shift} %>
   <%= f.submit %>
 <% end %>

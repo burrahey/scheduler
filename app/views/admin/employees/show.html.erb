@@ -1,1 +1,3 @@
 <%= render "employee", employee: @employee %>
+<h3><%= "Shifts" if @employee.shifts.length > 0 %></h3>
+<%= render partial: "admin/shifts/shift", collection: @employee.shifts %>
