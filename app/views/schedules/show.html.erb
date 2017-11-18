@@ -4,7 +4,7 @@
   <% end %>
   <%= link_to "Delete", schedule_path(@schedule), method: 'delete' %>
 </h4>
-<% @schedule.shifts.each do |shift| %>
+<% @schedule.shifts_in_chronological_order.each do |shift| %>
   <%= shift.employee.first_name %> <%= shift.employee.last_name %>
   <%= render "admin/shifts/shift", shift: shift %>
 <% end %>

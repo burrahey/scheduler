@@ -29,6 +29,10 @@ class Schedule < ApplicationRecord
     Schedule.find_by(start_date: date.beginning_of_week)
   end
 
+  def shifts_in_chronological_order
+    self.shifts.order(:date)
+  end
+
   def assign_shifts
     date = self.start_date
     @employees = Employee.all
