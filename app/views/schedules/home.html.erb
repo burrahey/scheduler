@@ -1,2 +1,4 @@
 <h1 class="home-title">Scheduler.</h1>
-<h3>Generate a <%= link_to "new schedule", new_schedule_path %> or <%= link_to "view existing ones", schedules_path %>.</h3>
+<% if employee_signed_in? %>
+  <h3>Generate a <%= link_to "new schedule", new_schedule_path %> or <%= link_to "view existing ones", schedules_path %>.</h3>
+<% end %>
