@@ -12,11 +12,18 @@ class Schedule < ApplicationRecord
     end
   end
 
-  #refactor this bad boy
   def build_schedule
-    @employees = Employee.all
+    self.set_start_date
+    self.assign_shifts
+  end
+
+  def set_start_date
     self.start_date  = self.start_date.beginning_of_week
+  end
+
+  def assign_shifts
     date = self.start_date
+    @employees = Employee.all
 
     5.times do
       @employees.each do |employee|
@@ -28,5 +35,4 @@ class Schedule < ApplicationRecord
     end
     self.end_date = date
   end
-
 end
