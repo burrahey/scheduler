@@ -1,5 +1,7 @@
 # README
 
+This is just Version 0. More to come soon!
+
 ## Installation
 
 You can install this program in its current form by cloning it by entering ```git clone https://github.com/burrahey/scheduler.git``` into the console.
@@ -14,7 +16,7 @@ You can install this program in its current form by cloning it by entering ```gi
 
 4. Open your browser and navigate to localhost:3000.
 
-5. Browse the app like any other website.  The website is viewable without logging in, but you will need to create an account to add data to the dynamic site.  This can be done by navigating to "Sign Up" and either creating an account the normal way or signing in through your Google account (recommended).
+5. Sign up regularly or through Facebook to start generating automated schedules.
 
 ## Contributing
 
