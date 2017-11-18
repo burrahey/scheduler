@@ -35,6 +35,7 @@ class SchedulesController < ApplicationController
   end
 
   def set_schedule
+    @schedule = Schedule.find_by(id: params[:id])
   end
 
 end

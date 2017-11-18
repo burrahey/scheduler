@@ -7,13 +7,11 @@ class Schedule < ApplicationRecord
     date = start_date
     7.times do
       if date.on_weekday?
-        binding.pry
         @employees.each do |employee|
           shift = self.shifts.build(date: date, start_time: Time.new(1111, 1, 1, 9, 0, 0), end_time: Time.new(1111, 1, 1, 17, 0, 0), published: false)
           shift.employee = employee
           shift.save
         end
-      else
         date = date.next_day
       end
     end
