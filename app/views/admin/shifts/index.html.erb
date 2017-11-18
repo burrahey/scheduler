@@ -1,5 +1,7 @@
 <% if  @employee.shifts.length == 0 %>
-<h3>This employee has no shifts yet. </h3>
-<%= link_to "Add one here.", new_admin_employee_shift_path(@employee) %>
+  <h3><%= @employee.first_name %> has no shifts yet. </h3>
+<% else %>
+  <h3><%= @employee.first_name %>'s Shifts:</h3>
 <% end %>
 <%= render partial: "shift", collection: @shifts %>
+<h3><%= link_to "Add Shift.", new_admin_employee_shift_path(@employee) %></h3>

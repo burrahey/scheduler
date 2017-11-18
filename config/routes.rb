@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :employees do
-      resources :shifts
+      resources :shifts, except: :show
     end
   end
   resources :schedules

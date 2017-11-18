@@ -1,3 +1,4 @@
+<h1><%= title_view_of_schedule(@schedule) %></h1>
 <h4>
   <% if !@schedule.published %>
     <%= link_to "Publish", publish_path, method: 'post' %> ||

@@ -14,7 +14,7 @@ class Admin::ShiftsController < ApplicationController
     @shift = Shift.build_and_assign_schedule(shift_params, @employee.id)
 
     if @shift.save
-      redirect_to admin_employee_shift_path(@employee, @shift)
+      redirect_to schedule_path(@shift.schedule)
     else
       render 'admin/shifts/new'
     end
@@ -24,18 +24,16 @@ class Admin::ShiftsController < ApplicationController
     @shift.assign_attributes(shift_params)
 
     if @shift.save
-      redirect_to admin_employee_shift_path(@employee, @shift)
+      redirect_to schedule_path(@shift.schedule)
     else
       render 'admin/shifts/edit'
     end
   end
 
   def destroy
+    @schedule = @shift.schedule
     @shift.destroy
-    redirect_to admin_employee_path(@employee)
-  end
-
-  def show
+    redirect_to schedule_path(@schedule)
   end
 
   def edit
