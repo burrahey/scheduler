@@ -1,8 +1,4 @@
 Notes
-- develop a regular shifts index page (maybe enter a date range) - maybe 'search'
-
-- you should be able to click the schedule to add, edit or delete a shift WITHOUT an employee. SHIFTS CONTROLLER!
-
 - get rid of all the extra devise links
 
 
@@ -21,7 +17,6 @@ and create  employees/1/shifts/new
 
 
 round 2:
+- you should be able to click the schedule to add, edit or delete a shift WITHOUT an employee. SHIFTS CONTROLLER!
 - you can assign an employee to a shift or switch it out easily
 - you should be able to change employees for a shift - a shift should be tied to its schedule, NOT its employee
-- when you create a shift, it should find_or_create_by_ a schedule that it should belong to: e.g. you create a shift, it looks for the beginning of the week of that date, find_or_create_by_ schedule
-- then you can leave the employee shift functionality but you can add most of the same functionality thru the schedule
