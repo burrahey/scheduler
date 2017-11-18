@@ -16,18 +16,14 @@ class Admin::EmployeesController < ApplicationController
     if @employee.save
       if shift_included_in_params?(employee_params[:shift])
         @shift = @employee.shifts.build(employee_params[:shift])
-
         if !@shift.save
           redirect_to new_admin_employee_shift_path(@employee, @shift), alert: "The employee was saved, but the shift was not. Try adding a shift for this employee below."
         else
-          redirect_to admin_employee_url(@employee)
+          redirect_to admin_employee_url(@employee) #I know this is repititive but rails complains when I try to fix it!
         end
-
-
       else
         redirect_to admin_employee_url(@employee)
       end
-
     else
       @shift ||= @employee.shifts.build
       render 'admin/employees/new'
