@@ -5,13 +5,13 @@ class Schedule < ApplicationRecord
   def build_schedule
     @employees = Employee.all
     date = start_date
-
     7.times do
       if date.on_weekday?
+        binding.pry
         @employees.each do |employee|
-          #if they don't already have a shift
-          #for each employee, build a for the schedule that day: 9-5pm
-          #save shift if possible
+          shift = self.shifts.build(date: date, start_time: Time.new(1111, 1, 1, 9, 0, 0), end_time: Time.new(1111, 1, 1, 17, 0, 0), published: false)
+          shift.employee = employee
+          shift.save
         end
       else
         date = date.next_day
@@ -19,10 +19,6 @@ class Schedule < ApplicationRecord
     end
 
     self.end_date = date
-    self.savve
-
-    #set end date
-    #save the schedule and shifts
   end
 
 end

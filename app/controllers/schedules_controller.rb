@@ -13,9 +13,14 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new(schedule_params)
-    @schedule.build_schedule
-    redirect_to schedule_path(@schedule)
+    if !schedule_params[:start_date].empty?
+      @schedule = Schedule.new(schedule_params)
+      @schedule.build_schedule
+      @schedule.save
+      redirect_to schedule_path(@schedule)
+    else
+      redirect_to new_schedule_path, alert: 'Please enter a valid date'
+    end
   end
 
   def show
