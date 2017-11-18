@@ -2,7 +2,7 @@
 <ul>
   <% @schedules.each do |schedule| %>
     <li>
-      <%= link_to schedule.start_date.strftime("%A, %B %e, %Y"), schedule_path(schedule) %>
+      <%= title_view_of_schedule(schedule) %>
     </li>
   <% end %>
 </ul>
