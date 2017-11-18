@@ -1,9 +1,10 @@
 <div class='container'>
   <h2>Edit shift here:</h2>
-  <%= form_for [:admin, :employee, @shift] do |t| %>
+  <%= form_for [:admin, @shift.employee, @shift] do |t| %>
     <%= render "form", t: t %>
-    <div class="submit-button">
-      <%= t.submit %>
-    </div>
+      <%= t.hidden_field :employee_id %>
+      <div class="submit-button">
+        <%= t.submit %>
+      </div>
   <% end %>
 </div>

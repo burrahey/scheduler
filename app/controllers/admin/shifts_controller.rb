@@ -1,7 +1,7 @@
 class Admin::ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
   before_action :set_employee, only: [:create, :update, :destroy, :index]
-  
+
   def index
     @shifts = @employee.shifts
   end
@@ -24,6 +24,7 @@ class Admin::ShiftsController < ApplicationController
     @shift.assign_attributes(shift_params)
 
     if @shift.save
+      binding.pry
       redirect_to admin_employee_shift_path(@employee, @shift)
     else
       render 'admin/shifts/edit'

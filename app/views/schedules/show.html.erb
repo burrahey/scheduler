@@ -1,3 +1,4 @@
+<h3>Here's an automatically generated schedule.. feel free to make changes before you publish!</h3>
 <% @schedule.shifts.each do |shift| %>
   <%= shift.employee.first_name %> <%= shift.employee.last_name %>
   <%= render "admin/shifts/shift", shift: shift %>

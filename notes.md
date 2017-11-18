@@ -1,7 +1,9 @@
 Notes
 
 To do:
-
+- need to fix edit and delete shifts on schedule
+- refactor scheduling model its a beast
+- do you care about displays at all?
 - can add/edit/delete if you're the employee who owns the shift. can view if you're logged in
 and create  employees/1/shifts/new
 - allow for a new schedule to be created (has many through) - should be for a week only, assigns all employees a shift
