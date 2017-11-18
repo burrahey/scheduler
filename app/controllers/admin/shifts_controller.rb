@@ -11,8 +11,7 @@ class Admin::ShiftsController < ApplicationController
   end
 
   def create
-    binding.pry
-    @shift = @employee.shifts.build(shift_params)
+    @shift = Shift.build_and_assign_schedule(shift_params, @employee.id)
 
     if @shift.save
       redirect_to admin_employee_shift_path(@employee, @shift)
