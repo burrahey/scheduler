@@ -21,7 +21,7 @@ class Shift < ApplicationRecord
       shift = self.new(shift_params)
     end
 
-    shift.schedule = Schedule.find_by_start_date(shift.date)
+    shift.schedule = Schedule.find_by_any_date(shift.date)
 
     return shift
   end

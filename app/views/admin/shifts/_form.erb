@@ -1,4 +1,6 @@
-<%= check_and_display_errors(@shift) %> <br />
+<div class='field_with_errors'>
+  <%= check_and_display_errors(@shift) %>
+</div> <br />
 <%= t.label :date %>
 <%= t.date_field :date %> <br />
 <%= t.label :start_time %>

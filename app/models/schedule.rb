@@ -5,28 +5,21 @@ class Schedule < ApplicationRecord
   def self.check_date_validity(date)
     if date.empty?
       return "Please enter a valid date"
-    elsif Schedule.find_by(start_date: Schedule.to_start_date(date))
+    elsif Schedule.find_by_any_date(date)
       return "A schedule already exists for this time"
     else
       return nil
     end
   end
 
-  def self.to_start_date(date)
-    date.to_datetime.beginning_of_week
+  def self.find_by_any_date(date)
+    date = date.to_datetime.beginning_of_week
+    Schedule.find_by(start_date: date)
   end
 
   def build_schedule
-    self.set_start_date
-    self.assign_shifts
-  end
-
-  def set_start_date
     self.start_date  = self.start_date.beginning_of_week
-  end
-
-  def self.find_by_start_date(date)
-    Schedule.find_by(start_date: date.beginning_of_week)
+    self.assign_shifts
   end
 
   def shifts_in_chronological_order
