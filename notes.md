@@ -1,6 +1,4 @@
 Notes
-- schedule - allows you to pick a date, but automatically chooses the beginning of the week
-- validate input that a schedule doesn't already exist for that date 
 - generates schedule for that week - start_date is the beginning of the week, always a monday
 - when a shift is added, we look for a schedule
 - when a schedule is not found, we say please make a schedule first
