@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:edit, :show, :update, :destroy]
+  before_action :set_schedule, only: [:show, :destroy]
 
   def home
   end
@@ -9,15 +9,13 @@ class SchedulesController < ApplicationController
   end
 
   def new
+    @schedule = Schedule.new
   end
 
   def create
-  end
-
-  def edit
-  end
-
-  def update
+    @schedule = Schedule.new(schedule_params)
+    @schedule.build_schedule
+    redirect_to schedule_path(@schedule)
   end
 
   def show
@@ -28,6 +26,7 @@ class SchedulesController < ApplicationController
 
   private
   def schedule_params
+    params.require(:schedule).permit(:start_date)
   end
 
   def set_schedule

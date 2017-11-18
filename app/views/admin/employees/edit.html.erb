@@ -2,6 +2,8 @@
   <h2>Edit This Employee:</h2>
   <%= form_for [:admin, @employee] do |f| %>
     <%= render partial: 'form', locals: {employee: @employee, f:f} %>
-    <%= f.submit %>
+    <div class="submit-button">
+      <%= f.submit %>
+    </div>
   <% end %>
 </div>

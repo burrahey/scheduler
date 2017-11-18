@@ -43,31 +43,26 @@ a:hover {
 
 /*////// FORMS //////*/
 
-.button {
+.button, input[type=submit] {
 	font: bold 13px Helvetica, Arial, clean, sans-serif !important;
 	color: white;
 	padding: 5px 10px 5px;
 	white-space: nowrap;
 	text-decoration: none;
 	cursor: pointer;
-	background: IndianRed;
+	background: SkyBlue;
 	border-style: none;
 	text-align: center;
 	overflow: visible;
 }
 
-#edit-button {
-  width: 120px;
-  float:left;
-}
-
-#delete-button {
-  width: 120px;
-  overflow: hidden;
+.submit-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .container {
-  width: 170px;
+  width: 35%;
   clear: both;
 }
 

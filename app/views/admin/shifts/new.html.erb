@@ -2,6 +2,8 @@
 <div class="container">
   <%= form_for [:admin, :employee, @shift] do |t| %>
     <%= render "form", t: t %>
-    <%= t.submit %>
+    <div class="submit-button">
+      <%= t.submit %>
+    </div>
   <% end %>
 </div>
