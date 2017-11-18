@@ -1,9 +1,11 @@
 <h2>Add a New Employee:</h2>
-<%= form_for [:admin, @employee] do |f| %>
-  <%= render partial: 'form', locals: {employee: @employee, f:f} %>
-  <strong><p>Optionally, you can add a shift:</p></strong>
-  <%= f.fields_for(@shift) do |t| %>
-    <%= render partial: 'admin/shifts/form', locals: {t:t, shift: @shift} %>
-  <%= f.submit %>
+<div class='container'>
+  <%= form_for [:admin, @employee] do |f| %>
+    <%= render partial: 'form', locals: {employee: @employee, f:f} %>
+    <strong><p>Optionally, you can add a shift:</p></strong>
+    <%= f.fields_for(@shift) do |t| %>
+      <%= render partial: 'admin/shifts/form', locals: {t:t, shift: @shift} %>
+    <%= f.submit %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

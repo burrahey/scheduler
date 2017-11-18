@@ -1,5 +1,7 @@
-<h2>Edit shift here:</h2>
-<%= form_for [:admin, :employee, @shift] do |t| %>
-  <%= render "form", t: t %>
-  <%= t.submit %>
-<% end %>
+<div class='container'>
+  <h2>Edit shift here:</h2>
+  <%= form_for [:admin, :employee, @shift] do |t| %>
+    <%= render "form", t: t %>
+    <%= t.submit %>
+  <% end %>  
+</div>

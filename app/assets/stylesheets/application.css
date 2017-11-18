@@ -18,6 +18,13 @@ body {
   background-color: pink;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
+  background-image: url("sky2.jpg");
+  background-repeat: repeat-y;
+  background-position: right;
+}
+
+.home-title {
+  font-size: 700%;
 }
 
 /*////// LINKS //////*/
@@ -31,7 +38,7 @@ a:link, a:visited {
 }
 
 a:hover {
-  color: cyan;
+  color: LightSkyBlue;
 }
 
 /*////// FORMS //////*/
@@ -69,17 +76,17 @@ a:hover {
   clear: both;
 }
 
+.field_with_errors {
+  display: inline-block;
+  background-color: LightSkyBlue;
+}
+
 /*////// NAV //////*/
 div.header-nav {
   text-align: center;
 }
 
 #flash_error, #flash_notice, #flash_alert  {
-  background-color: cyan;
+  background-color: LightSkyBlue;
   font: bold;
-}
-
-.field_with_errors {
-  display: inline-block;
-  background-color: cyan;
 }

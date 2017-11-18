@@ -1,4 +1,5 @@
 class Admin::EmployeesController < ApplicationController
+  include Admin::EmployeeHelper
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   def index
     @employees = Employee.all
@@ -11,14 +12,22 @@ class Admin::EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new_from_params(employee_params)
+
     if @employee.save
-      if employee_params[:shift].values[1..-1].any? {|answer| !answer.empty?}
+      if shift_included_in_params?(employee_params[:shift])
         @shift = @employee.shifts.build(employee_params[:shift])
+
         if !@shift.save
           redirect_to new_admin_employee_shift_path(@employee, @shift), alert: "The employee was saved, but the shift was not. Try adding a shift for this employee below."
+        else
+          redirect_to admin_employee_url(@employee)
         end
+
+
+      else
+        redirect_to admin_employee_url(@employee)
       end
-      return admin_employee_url(@employee)
+
     else
       @shift ||= @employee.shifts.build
       render 'admin/employees/new'

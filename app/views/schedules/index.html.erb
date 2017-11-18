@@ -1,0 +1,8 @@
+<h4>See a list of schedules below:</h4>
+<ul>
+  <% @schedules.each do |schedule| %>
+    <li>
+      <%= link_to schedule.id, schedule_path(schedule) %>
+    </li>
+  <% end %>
+</ul>
