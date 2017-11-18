@@ -2,6 +2,16 @@ class Schedule < ApplicationRecord
   has_many :shifts, dependent: :destroy
   has_many :employees, through: :shifts
 
+  def self.check_date_validity(date)
+    if date.empty?
+      return "Please enter a valid date"
+    elsif Schedule.find_by(start_date: date.to_datetime.beginning_of_week)
+      return "A schedule already exists for this time"
+    else
+      return nil
+    end
+  end
+
   def build_schedule
     @employees = Employee.all
     date = start_date
