@@ -1,4 +1,9 @@
-<h3>Here's an automatically generated schedule.. feel free to make changes before you publish!</h3>
+<h4>
+  <% if !@schedule.published %>
+    <%= link_to "Publish", publish_path, method: 'post' %> ||
+  <% end %>
+  <%= link_to "Delete", schedule_path(@schedule), method: 'delete' %>
+</h4>
 <% @schedule.shifts.each do |shift| %>
   <%= shift.employee.first_name %> <%= shift.employee.last_name %>
   <%= render "admin/shifts/shift", shift: shift %>

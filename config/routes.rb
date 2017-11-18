@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :schedules
+  post '/schedules/:id/publish', to: 'schedules#publish', as: 'publish'
   post '/admin/employees/associates', to: 'admin/employees#associates'
 
 end

@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :destroy]
+  before_action :set_schedule, only: [:show, :destroy, :publish]
 
   def home
   end
@@ -27,6 +27,14 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
+    @schedule.destroy 
+    redirect_to schedules_path
+  end
+
+  def publish
+    @schedule.published = true
+    @schedule.save
+    redirect_to schedule_path(@schedule)
   end
 
   private
