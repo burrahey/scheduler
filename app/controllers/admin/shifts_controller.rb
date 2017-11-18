@@ -11,6 +11,7 @@ class Admin::ShiftsController < ApplicationController
   end
 
   def create
+    binding.pry
     @shift = @employee.shifts.build(shift_params)
 
     if @shift.save
@@ -51,6 +52,6 @@ class Admin::ShiftsController < ApplicationController
   end
 
   def shift_params
-     params.require(:shift).permit(:date, :start_time, :end_time, :published)
+     params.require(:shift).permit(:date, :start_time, :end_time, :published, :employee_id)
   end
 end
