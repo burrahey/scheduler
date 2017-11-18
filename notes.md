@@ -1,21 +1,9 @@
 Notes
 
 To do:
-- need to fix edit and delete shifts on schedule
-- refactor scheduling model its a beast
-- do you care about displays at all?
-- can add/edit/delete if you're the employee who owns the shift. can view if you're logged in
-and create  employees/1/shifts/new
-- allow for a new schedule to be created (has many through) - should be for a week only, assigns all employees a shift
-- scheduler:
- For each day of the week:
-  * assign a morning / afternoon chat shift, circling through associates evenly. assign phones to all the rest. repeat until completed.
-  * assign supervisor roles to supervisors
-- schedules index to display all
-- schedules show page
-- display the schedule somehow nicely per day
-- get rid of all the extra devise files
-- get rid of all the extra devise links
+- allow for a schedule to be deleted, along with its dependent shifts
+- allow for  schedule to be published
+- develop a regular shifts index page (maybe enter a date range) - maybe 'search'
 
 permissions
 associates can add/edit/delete shifts for themselves on an existing schedule
@@ -24,11 +12,19 @@ supervisors can add/edit/delete shifts for everyone on an existing schedule
 supervisors can edit/delete employees
 supervisors can view unpublished schedules
 associates can only view published schedules
-
+- can add/edit/delete if you're the employee who owns the shift. can view if you're logged in
+and create  employees/1/shifts/new
 - add permissions for admins. disallow everything by non-logged in users
 
-Shift
-- shift date cannot be before employee's date hired
+- get rid of all the extra devise links
 
-Schedule
-published: true/false (publishing a schedule makes all its shifts created thus far public)
+
+round 2:
+- display the schedule somehow nicely per day. use scope methods to isolate schedule for each day
+- when you make a shift, it should get added to the appropriate schedule
+- there should only be one schedule for that week - either published or not published
+- you should be able to click the schedule to add, edit or delete a shift WITHOUT an employee
+- you can assign an employee to a shift or switch it out easily
+- you should be able to change employees for a shift - a shift should be tied to its schedule, NOT its employee
+- when you create a shift, it should find_or_create_by_ a schedule that it should belong to: e.g. you create a shift, it looks for the beginning of the week of that date, find_or_create_by_ schedule
+- then you can leave the employee shift functionality but you can add most of the same functionality thru the schedule

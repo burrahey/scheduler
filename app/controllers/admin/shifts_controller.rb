@@ -24,7 +24,6 @@ class Admin::ShiftsController < ApplicationController
     @shift.assign_attributes(shift_params)
 
     if @shift.save
-      binding.pry
       redirect_to admin_employee_shift_path(@employee, @shift)
     else
       render 'admin/shifts/edit'
