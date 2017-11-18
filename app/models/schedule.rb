@@ -8,14 +8,13 @@ class Schedule < ApplicationRecord
     7.times do
       if date.on_weekday?
         @employees.each do |employee|
-          shift = self.shifts.build(date: date, start_time: Time.new(1111, 1, 1, 9, 0, 0, "+01:00"), end_time: Time.new(1111, 1, 1, 17, 0, 0, "+01:00"), published: false)
+          shift = self.shifts.build(date: date, start_time: Time.new(1111, 1, 1, 8, 0, 0, "-01:00"), end_time: Time.new(1111, 1, 1, 16, 0, 0, "-01:00"), published: false)
           shift.employee = employee
           shift.save
         end
-        date = date.next_day
       end
+      date = date.next_day
     end
-
     self.end_date = date
   end
 
