@@ -33,12 +33,8 @@ class SchedulesController < ApplicationController
   end
 
   def publish
-    @schedule.published = true
-    @schedule.save
+    @schedule.publish_and_save
     redirect_to schedule_path(@schedule)
-  end
-
-  def search
   end
 
   private

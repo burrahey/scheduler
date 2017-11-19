@@ -26,6 +26,14 @@ class Schedule < ApplicationRecord
     self.shifts.order(:date)
   end
 
+  def publish_and_save
+    self.published = true
+    self.shifts.each do |shift|
+      shift.update(published: true)
+    end
+    self.save
+  end
+
   def assign_shifts
     date = self.start_date
     @employees = Employee.all
