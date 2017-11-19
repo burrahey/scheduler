@@ -13,5 +13,4 @@ Rails.application.routes.draw do
   end
   post '/schedules/:id/publish', to: 'schedules#publish', as: 'publish'
   post '/admin/employees/associates', to: 'admin/employees#associates'
-
 end

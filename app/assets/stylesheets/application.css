@@ -27,6 +27,10 @@ body {
   font-size: 700%;
 }
 
+.home-title:hover {
+  color: SkyBlue;
+}
+
 /*////// LINKS //////*/
 a {
   transition: color 0.3s ease;

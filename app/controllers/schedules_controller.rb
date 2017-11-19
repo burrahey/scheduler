@@ -38,6 +38,9 @@ class SchedulesController < ApplicationController
     redirect_to schedule_path(@schedule)
   end
 
+  def search
+  end
+
   private
   def schedule_params
     params.require(:schedule).permit(:start_date)
