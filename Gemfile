@@ -33,7 +33,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
-gem 'pundit'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
 # Use Capistrano for deployment

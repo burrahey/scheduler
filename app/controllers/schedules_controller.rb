@@ -1,11 +1,14 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :destroy, :publish]
+  before_action :require_login, :require_supervisor
+  skip_before_action :require_login, only: :home
+  skip_before_action :require_supervisor, only: [:home, :index, :show]
 
   def home
   end
 
   def index
-    @schedules = Schedule.all
+    @schedules = resource_scope(Schedule)
   end
 
   def new

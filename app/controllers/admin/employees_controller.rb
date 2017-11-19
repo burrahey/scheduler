@@ -1,6 +1,8 @@
 class Admin::EmployeesController < ApplicationController
-  include Admin::EmployeeHelper
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, :require_supervisor
+  skip_before_action :require_supervisor, only: [:index, :show]
+
   def index
     @employees = Employee.all
   end

@@ -22,10 +22,6 @@ class Schedule < ApplicationRecord
     self.assign_shifts
   end
 
-  def shifts_in_chronological_order
-    self.shifts.order(:date)
-  end
-
   def publish_and_save
     self.published = true
     self.shifts.each do |shift|

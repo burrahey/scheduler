@@ -1,7 +1,9 @@
-<% if  @employee.shifts.length == 0 %>
+<% if resource_scope(@employee.shifts).length == 0 %>
   <h3><%= @employee.first_name %> has no shifts yet. </h3>
 <% else %>
   <h3><%= @employee.first_name %>'s Shifts:</h3>
 <% end %>
-<%= render partial: "shifts/shift", collection: @shifts %>
-<h3><%= link_to "Add Shift.", new_admin_employee_shift_path(@employee) %></h3>
+<%= render partial: "shifts/shift", collection: resource_scope(@shifts) %>
+<% if current_employee.supervisor? %>
+  <h3><%= link_to "Add Shift.", new_admin_employee_shift_path(@employee) %></h3>
+<% end %>

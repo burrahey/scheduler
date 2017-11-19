@@ -6,7 +6,7 @@
   <%= link_to "Delete", schedule_path(@schedule), method: 'delete' %> ||
   <%= link_to "Add Shift", new_schedule_shift_path(@schedule) %>
 </h3>
-<% @schedule.shifts_in_chronological_order.each do |shift| %>
+<% resource_scope(@schedule.shifts).each do |shift| %>
   <%= shift.employee.first_name %> <%= shift.employee.last_name %>
   <%= render "shifts/shift", shift: shift %>
 <% end %>

@@ -1,6 +1,7 @@
 class ShiftsController < ApplicationController
   before_action :set_schedule, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, :require_supervisor
 
   def new
     @shift = Shift.new
