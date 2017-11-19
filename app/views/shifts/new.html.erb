@@ -1,11 +1,4 @@
 <h2>Add a new shift here:</h2>
 <div class="container">
-  <%= form_for [:schedule, @shift] do |t| %>
-    <%= t.label :employee %> <br />
-    <%= t.collection_select(:employee_id, Employee.all, :id, :first_name) %>
-    <%= render "form", t: t %>
-    <div class="submit-button">
-    <%= t.submit %>
-    </div>
-  <% end %>
+  <%= render partial: "form", locals: {schedule: :schedule, shift: @shift} %>
 </div>
