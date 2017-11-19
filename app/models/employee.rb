@@ -7,7 +7,7 @@ class Employee < ApplicationRecord
   validates :first_name, :last_name, :role, :date_hired, presence: true
   enum role: [:associate, :supervisor]
   scope :associates, -> { where(role: 'associate') }
-  has_many :shifts
+  has_many :shifts, dependent: :destroy
   has_many :schedules, through: :shifts
 
   def self.from_omniauth(auth)

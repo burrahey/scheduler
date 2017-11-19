@@ -1,8 +1,12 @@
-<h4>See a list of schedules below:</h4>
-<ul>
-  <% @schedules.each do |schedule| %>
-    <li>
-      <%= title_view_of_schedule(schedule) %>
-    </li>
-  <% end %>
-</ul>
+<% if @schedules.length > 0 %>
+  <h4>See a list of schedules below:</h4>
+  <ul>
+    <% @schedules.each do |schedule| %>
+      <li>
+        <%= title_view_of_schedule(schedule) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+<h4>No schedules yet. Would you like to <%= link_to "make a new schedule?", new_schedule_path %></h4>
+<% end %>
