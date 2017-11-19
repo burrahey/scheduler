@@ -20,25 +20,6 @@ class Admin::ShiftsController < ApplicationController
     end
   end
 
-  def update
-    @shift.assign_attributes(shift_params)
-
-    if @shift.save
-      redirect_to schedule_path(@shift.schedule)
-    else
-      render 'admin/shifts/edit'
-    end
-  end
-
-  def destroy
-    @schedule = @shift.schedule
-    @shift.destroy
-    redirect_to schedule_path(@schedule)
-  end
-
-  def edit
-  end
-
   private
   def set_shift
     @shift = Shift.find_by(id: params[:id])

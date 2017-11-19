@@ -1,5 +1,6 @@
 class ShiftsController < ApplicationController
-  before_action :set_schedule, only: [:new, :create]
+  before_action :set_schedule, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_shift, only: [:show, :edit, :update, :destroy]
 
   def new
     @shift = Shift.new
@@ -13,6 +14,24 @@ class ShiftsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @shift.assign_attributes(shift_params)
+
+    if @shift.save
+      redirect_to schedule_path(@shift.schedule)
+    else
+      render 'admin/shifts/edit'
+    end
+  end
+
+  def destroy
+    @shift.destroy
+    redirect_to schedule_path(@schedule)
   end
 
   private
