@@ -19,7 +19,7 @@ class Admin::EmployeesController < ApplicationController
         if !@shift.save
           redirect_to new_admin_employee_shift_path(@employee, @shift), alert: "The employee was saved, but the shift was not. Try adding a shift for this employee below."
         else
-          redirect_to admin_employee_url(@employee) #I know this is repititive but rails complains when I try to fix it!
+          redirect_to admin_employee_url(@employee) #I know this is repititive but rails complains if I don't have the else clause.
         end
       else
         redirect_to admin_employee_url(@employee)
