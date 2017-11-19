@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
     request.env['omniauth.origin'] || root_path
   end
 
+  private
+
   def require_login
     redirect_to root_path, alert: "Please sign in first" unless employee_signed_in?
   end
