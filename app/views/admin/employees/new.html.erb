@@ -4,7 +4,7 @@
     <%= render partial: 'form', locals: {employee: @employee, f:f} %>
     <strong><p>Optionally, you can add a shift:</p></strong>
     <%= f.fields_for(@shift) do |t| %>
-      <%= render partial: 'admin/shifts/form', locals: {t:t, shift: @shift} %>
+      <%= render partial: 'shifts/form', locals: {t:t, shift: @shift} %>
       <div class="submit-button">
         <%= f.submit %>
       </div>

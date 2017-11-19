@@ -1,7 +1,7 @@
 <h2>Add a new shift here:</h2>
 <div class="container">
   <%= form_for [:admin, :employee, @shift] do |t| %>
-    <%= render "form", t: t %>
+    <%= render "shifts/form", t: t %>
     <div class="submit-button">
       <%= t.submit %>
     </div>

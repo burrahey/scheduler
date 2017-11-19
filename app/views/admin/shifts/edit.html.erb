@@ -1,7 +1,7 @@
 <div class='container'>
   <h2>Edit shift here:</h2>
   <%= form_for [:admin, @shift.employee, @shift] do |t| %>
-    <%= render "form", t: t %>
+    <%= render "shifts/form", t: t %>
       <%= t.hidden_field :employee_id %>
       <div class="submit-button">
         <%= t.submit %>

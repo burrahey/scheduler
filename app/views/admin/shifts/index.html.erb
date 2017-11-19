@@ -3,5 +3,5 @@
 <% else %>
   <h3><%= @employee.first_name %>'s Shifts:</h3>
 <% end %>
-<%= render partial: "shift", collection: @shifts %>
+<%= render partial: "shifts/shift", collection: @shifts %>
 <h3><%= link_to "Add Shift.", new_admin_employee_shift_path(@employee) %></h3>
