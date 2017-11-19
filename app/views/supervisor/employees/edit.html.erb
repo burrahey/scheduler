@@ -1,6 +1,6 @@
 <div class='container'>
   <h2>Edit This Employee:</h2>
-  <%= form_for [:admin, @employee] do |f| %>
+  <%= form_for [:supervisor, @employee] do |f| %>
     <%= render partial: 'form', locals: {employee: @employee, f:f} %>
     <div class="submit-button">
       <%= f.submit %>

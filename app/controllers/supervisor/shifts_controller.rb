@@ -1,4 +1,4 @@
-class Admin::ShiftsController < ApplicationController
+class Supervisor::ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
   before_action :set_employee, only: [:create, :update, :destroy, :index]
   before_action :require_login, :require_supervisor
@@ -19,7 +19,7 @@ class Admin::ShiftsController < ApplicationController
     if @shift.save
       redirect_to schedule_path(@shift.schedule)
     else
-      render 'admin/shifts/new'
+      render 'supervisor/shifts/new'
     end
   end
 

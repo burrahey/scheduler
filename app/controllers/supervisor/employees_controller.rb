@@ -1,4 +1,4 @@
-class Admin::EmployeesController < ApplicationController
+class Supervisor::EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   before_action :require_login, :require_supervisor
   skip_before_action :require_supervisor, only: [:index, :show]
@@ -19,16 +19,16 @@ class Admin::EmployeesController < ApplicationController
       if shift_included_in_params?(employee_params[:shift])
         @shift = @employee.shifts.build(employee_params[:shift])
         if !@shift.save
-          redirect_to new_admin_employee_shift_path(@employee, @shift), alert: "The employee was saved, but the shift was not. Try adding a shift for this employee below."
+          redirect_to new_supervisor_employee_shift_path(@employee, @shift), alert: "The employee was saved, but the shift was not. Try adding a shift for this employee below."
         else
-          redirect_to admin_employee_url(@employee) #I know this is repititive but rails complains if I don't have the else clause.
+          redirect_to supervisor_employee_url(@employee) #I know this is repititive but rails complains if I don't have the else clause.
         end
       else
-        redirect_to admin_employee_url(@employee)
+        redirect_to supervisor_employee_url(@employee)
       end
     else
       @shift ||= @employee.shifts.build
-      render 'admin/employees/new'
+      render 'supervisor/employees/new'
     end
   end
 
@@ -37,7 +37,7 @@ class Admin::EmployeesController < ApplicationController
 
   def destroy
     @employee.destroy
-    redirect_to admin_employees_path
+    redirect_to supervisor_employees_path
   end
 
   def edit
@@ -46,15 +46,15 @@ class Admin::EmployeesController < ApplicationController
   def update
     @employee.update_from_params(employee_params)
     if @employee.save
-      redirect_to admin_employee_path(@employee)
+      redirect_to supervisor_employee_path(@employee)
     else
-      render 'admin/employees/edit'
+      render 'supervisor/employees/edit'
     end
   end
 
   def associates
     @employees = Employee.associates
-    render 'admin/employees/index'
+    render 'supervisor/employees/index'
   end
 
 

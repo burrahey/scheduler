@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :employees, :controllers => { :omniauth_callbacks => "employees/omniauth_callbacks", :registrations => 'employees/registrations', :sessions => 'employees/sessions'  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  namespace :admin do
+  namespace :supervisor do
     resources :employees do
       resources :shifts, only: [:index, :new, :create]
     end
@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :shifts, except: :show
   end
   post '/schedules/:id/publish', to: 'schedules#publish', as: 'publish'
-  post '/admin/employees/associates', to: 'admin/employees#associates'
+  post '/supervisor/employees/associates', to: 'supervisor/employees#associates'
 end

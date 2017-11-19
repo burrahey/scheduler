@@ -1,8 +1,8 @@
 <% if employee_signed_in? %>
   <div>
-    <%= link_to "Home", root_path %> | <%= link_to "View All Employees", admin_employees_path %> |
+    <%= link_to "Home", root_path %> | <%= link_to "View All Employees", supervisor_employees_path %> |
     <% if current_employee.supervisor? %>
-      <%= link_to "Add a New Employee", new_admin_employee_path %> | <%= link_to "Manage Associates", admin_employees_associates_path, method: 'post' %> |
+      <%= link_to "Add a New Employee", new_supervisor_employee_path %> | <%= link_to "Manage Associates", supervisor_employees_associates_path, method: 'post' %> |
     <% end %>
     <%= link_to "Sign Out", destroy_employee_session_path, method: 'delete' %>
   </div>
