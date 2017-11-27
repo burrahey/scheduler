@@ -26,7 +26,7 @@ class ShiftsController < ApplicationController
     if @shift.save
       redirect_to schedule_path(@shift.schedule)
     else
-      render 'supervisor/shifts/edit'
+      render 'shifts/edit'
     end
   end
 
