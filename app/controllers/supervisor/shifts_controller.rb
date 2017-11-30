@@ -1,12 +1,12 @@
 class Supervisor::ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
-  before_action :set_employee, only: [:create, :update, :destroy, :index]
+  before_action :set_employee, only: [:new, :create, :update, :destroy, :index]
   before_action :require_login, :require_supervisor
   skip_before_action :require_supervisor, only: :index
 
 
   def index
-    @shifts = resource_scope(@employee.shifts) 
+    @shifts = resource_scope(@employee.shifts)
   end
 
   def new

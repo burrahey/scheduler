@@ -33,8 +33,10 @@ class Employee < ApplicationRecord
     end
   end
 
-  def self.new_shift_from_params(shift_params)
-    
+  def shift_attributes=(shift_params)
+    self.shifts.build(shift_params).tap do |shift|
+      shift.schedule = Schedule.find_by_any_date(shift.date)
+    end
   end
 
   def update_from_params(employee_params)

@@ -17,15 +17,11 @@ class Supervisor::EmployeesController < ApplicationController
 
     if @employee.save
       if shift_included_in_params?(employee_params[:shift])
-        @shift = @employee.shifts.build(employee_params[:shift])
-        @schedule = Schedule.find_by_any_date(@shift.date)
-
-        if @schedule
-          @shift.schedule =  @schedule
-        end
+        @employee.shift_attributes=(employee_params[:shift])
+        @shift = @employee.shifts.last
 
         if !@shift.save
-          redirect_to new_supervisor_employee_shift_path(@employee, @shift), alert: "The employee was saved, but the shift was not. Try adding a shift for this employee below."
+          render 'supervisor/shifts/new'
         else
           redirect_to supervisor_employee_url(@employee) #I know this is repititive but rails complains if I don't have the else clause.
         end
