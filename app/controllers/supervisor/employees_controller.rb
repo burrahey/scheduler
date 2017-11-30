@@ -18,6 +18,12 @@ class Supervisor::EmployeesController < ApplicationController
     if @employee.save
       if shift_included_in_params?(employee_params[:shift])
         @shift = @employee.shifts.build(employee_params[:shift])
+        @schedule = Schedule.find_by_any_date(@shift.date)
+
+        if @schedule
+          @shift.schedule =  @schedule
+        end
+
         if !@shift.save
           redirect_to new_supervisor_employee_shift_path(@employee, @shift), alert: "The employee was saved, but the shift was not. Try adding a shift for this employee below."
         else

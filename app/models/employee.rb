@@ -33,6 +33,10 @@ class Employee < ApplicationRecord
     end
   end
 
+  def self.new_shift_from_params(shift_params)
+    
+  end
+
   def update_from_params(employee_params)
       self.first_name = employee_params[:first_name]
       self.last_name = employee_params[:last_name]
