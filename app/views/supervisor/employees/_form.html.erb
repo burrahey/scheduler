@@ -20,11 +20,12 @@
 <%= f.label :role %>
 <%= f.select(:role, Employee.roles.keys.map {|role| [role.titleize,role]}) %> <br /> <br />
 
-Select some preferences:
+<%= "Select some preferences:" if !Preference.all.empty? %>
 <%= f.collection_check_boxes :preference_ids, Preference.all, :id, :desc %> <br />
 <br />
-Or create a new preference:
-<%= f.fields_for :preferences, @preference do |preference_fields| %>
+
+<h2>You can even create a new preference:</h2>
+<%= f.fields_for :preferences, @employee.preferences.build do |preference_fields| %>
   Which day?
   <%= preference_fields.select(:day, Preference.days.keys.map {|day| [day.titleize,day]}, :include_blank => true) %> <br /><br />
   Prefer to work this day? (Check for 'yes')

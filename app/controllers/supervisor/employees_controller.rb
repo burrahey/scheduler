@@ -9,7 +9,6 @@ class Supervisor::EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    @preference = @employee.preferences.build
   end
 
   def create
@@ -17,7 +16,6 @@ class Supervisor::EmployeesController < ApplicationController
     if @employee.save
       redirect_to supervisor_employee_url(@employee)
     else
-      @preference = @employee.preferences.build
       render 'supervisor/employees/new'
     end
   end
