@@ -24,16 +24,14 @@ class Employee < ApplicationRecord
     end
   end
 
-  def shift_attributes=(shift_params)
-    self.shifts.build(shift_params).tap do |shift|
-      shift.schedule = Schedule.find_by_any_date(shift.date)
-    end
-  end
-
   def preferences_attributes=(preferences_attributes)
   preferences_attributes.values.each do |preference_attribute|
-    preference = Preference.find_or_create_by(preference_attribute)
-    self.preferences << preference if preference.valid?
+    preference = Preference.find_by(day: preference_attribute[:day])
+    preference = Preference.create(preference_attribute) if !preference
+
+    if preference.valid? && !self.preferences.include?(preference)
+      self.preferences << preference
+    end
   end
 end
 
