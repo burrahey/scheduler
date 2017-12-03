@@ -13,6 +13,7 @@ class Supervisor::EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
+    binding.pry
     if @employee.save
       redirect_to supervisor_employee_url(@employee)
     else
@@ -52,7 +53,7 @@ class Supervisor::EmployeesController < ApplicationController
   end
 
   def employee_params
-     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password)
+     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password, :preference_ids => [], :preference_type_attributes => [:desc, :day, :allow])
   end
 
 end
