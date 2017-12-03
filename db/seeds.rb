@@ -27,3 +27,41 @@ end
     :role => 'supervisor'
     )
 end
+
+Preference.create(
+  :day => 'monday',
+  :allow => false,
+  :desc => "can't work Mondays"
+)
+
+Preference.create(
+  :day => 'tuesday',
+  :allow => false,
+  :desc => "can't work Tuesdays"
+)
+
+Preference.create(
+  :day => 'wednesday',
+  :allow => false,
+  :desc => "can't work Wednesdays"
+)
+Preference.create(
+  :day => 'thursday',
+  :allow => false,
+  :desc => "can't work Thursdays"
+)
+Preference.create(
+  :day => 'friday',
+  :allow => false,
+  :desc => "can't work Fridays"
+)
+Preference.create(
+  :day => 'saturday',
+  :allow => false,
+  :desc => "can't work Saturdays"
+)
+Preference.create(
+  :day => 'sunday',
+  :allow => false,
+  :desc => "can't work Sundays"
+)

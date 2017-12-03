@@ -9,6 +9,8 @@ class Employee < ApplicationRecord
   scope :associates, -> { where(role: 'associate') }
   has_many :shifts, dependent: :destroy
   has_many :schedules, through: :shifts
+  has_many :employee_preferences
+  has_many :preferences, through: :employee_preferences
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |employee|
@@ -22,32 +24,18 @@ class Employee < ApplicationRecord
     end
   end
 
-  def self.new_from_params(employee_params)
-    self.new.tap do |employee|
-      employee.first_name = employee_params[:first_name]
-      employee.last_name = employee_params[:last_name]
-      employee.email = employee_params[:email]
-      employee.date_hired = employee_params[:date_hired]
-      employee.role = employee_params[:role]
-      employee.password = employee_params[:password]
-    end
-  end
-
   def shift_attributes=(shift_params)
     self.shifts.build(shift_params).tap do |shift|
       shift.schedule = Schedule.find_by_any_date(shift.date)
     end
   end
 
-  def update_from_params(employee_params)
-      self.first_name = employee_params[:first_name]
-      self.last_name = employee_params[:last_name]
-      self.email = employee_params[:email]
-      self.date_hired = employee_params[:date_hired]
-      self.role = employee_params[:role]
-      self.password = employee_params[:password] if !employee_params[:password].blank?
-      self
+  def preferences_attributes=(preferences_attributes)
+  preferences_attributes.values.each do |preference_attribute|
+    preference = Preference.find_or_create_by(preference_attribute)
+    self.preferences << preference if preference.valid?
   end
+end
 
 
 end

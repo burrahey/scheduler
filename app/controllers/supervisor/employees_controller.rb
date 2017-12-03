@@ -9,27 +9,15 @@ class Supervisor::EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    @shift = @employee.shifts.build
+    @preference = @employee.preferences.build
   end
 
   def create
-    @employee = Employee.new_from_params(employee_params)
-
+    @employee = Employee.new(employee_params)
     if @employee.save
-      if shift_included_in_params?(employee_params[:shift])
-        @employee.shift_attributes=(employee_params[:shift])
-        @shift = @employee.shifts.last
-
-        if !@shift.save
-          render 'supervisor/shifts/new'
-        else
-          redirect_to supervisor_employee_url(@employee) #I know this is repititive but rails complains if I don't have the else clause.
-        end
-      else
-        redirect_to supervisor_employee_url(@employee)
-      end
+      redirect_to supervisor_employee_url(@employee)
     else
-      @shift ||= @employee.shifts.build
+      @preference = @employee.preferences.build
       render 'supervisor/employees/new'
     end
   end
@@ -46,7 +34,7 @@ class Supervisor::EmployeesController < ApplicationController
   end
 
   def update
-    @employee.update_from_params(employee_params)
+    @employee.assign_attributes(employee_params)
     if @employee.save
       redirect_to supervisor_employee_path(@employee)
     else
@@ -66,7 +54,7 @@ class Supervisor::EmployeesController < ApplicationController
   end
 
   def employee_params
-     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password, :shift => [:published, :date, :start_time, :end_time])
+     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password, :preference_ids => [], :preferences_attributes => [:desc, :day, :allow])
   end
 
 end

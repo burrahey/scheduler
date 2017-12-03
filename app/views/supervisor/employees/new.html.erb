@@ -2,12 +2,8 @@
 <div class='container'>
   <%= form_for [:supervisor, @employee] do |f| %>
     <%= render partial: 'form', locals: {employee: @employee, f:f} %>
-    <strong><p>Optionally, you can add a shift:</p></strong>
-    <%= f.fields_for(@shift) do |t| %>
-      <%= render partial: 'shifts/mini_form', locals: {t:t, shift: @shift} %>
       <div class="submit-button">
         <%= f.submit %>
       </div>
-    <% end %>
   <% end %>
 </div>
