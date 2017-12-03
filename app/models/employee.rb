@@ -25,12 +25,12 @@ class Employee < ApplicationRecord
   end
 
   def preferences_attributes=(preferences_attributes)
-  preferences_attributes.values.each do |preference_attribute|
-    preference = Preference.find_by(day: preference_attribute[:day]) || Preference.create(preference_attribute)
+    preferences_attributes.values.each do |preference_attribute|
+      preference = Preference.find_by(day: preference_attribute[:day]) || Preference.create(preference_attribute)
 
-    if preference.valid? && !self.preferences.include?(preference)
-      self.preferences << preference
-    end
+      if preference.valid? && !self.preferences.include?(preference)
+        self.preferences << preference
+      end
   end
 end
 
