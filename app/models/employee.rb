@@ -31,8 +31,6 @@ class Employee < ApplicationRecord
       if preference.valid? && !self.preferences.include?(preference)
         self.preferences << preference
       end
+    end
   end
-end
-
-
 end
