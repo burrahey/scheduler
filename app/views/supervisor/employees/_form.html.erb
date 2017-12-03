@@ -24,9 +24,9 @@ Select some preferences:
 <%= f.collection_check_boxes :preference_ids, Preference.all, :id, :desc %> <br />
 <br />
 Or create a new preference:
-<%= f.fields_for :preferences, Preference.new do |preference_fields| %>
+<%= f.fields_for :preferences, @employee.preferences.build do |preference_fields| %>
   Which day?
-  <%= preference_fields.select(:day, Preference.days.keys.map {|day| [day.titleize,day]}) %> <br /><br />
+  <%= preference_fields.select(:day, Preference.days.keys.map {|day| [day.titleize,day]}, :include_blank => true) %> <br /><br />
   Prefer to work this day? (Check for 'yes')
   <%= preference_fields.check_box :allow %> <br /><br />
   What would you like to call this preference?

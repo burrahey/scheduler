@@ -53,7 +53,7 @@ class Supervisor::EmployeesController < ApplicationController
   end
 
   def employee_params
-     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password, :preference_ids => [], :preference_type_attributes => [:desc, :day, :allow])
+     params.require(:employee).permit(:first_name, :last_name, :email, :date_hired, :role, :password, :preference_ids => [], :preferences_attributes => [:desc, :day, :allow])
   end
 
 end

@@ -41,7 +41,7 @@ class Employee < ApplicationRecord
     end
   end
 
-  def preference_attributes=(preferences_attributes)
+  def preferences_attributes=(preferences_attributes)
   preferences_attributes.values.each do |preferences_attribute|
     preference = Preference.find_or_create_by(preferences_attribute)
     self.preferences << preference if preference.valid?
