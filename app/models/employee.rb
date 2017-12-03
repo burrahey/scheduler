@@ -9,6 +9,8 @@ class Employee < ApplicationRecord
   scope :associates, -> { where(role: 'associate') }
   has_many :shifts, dependent: :destroy
   has_many :schedules, through: :shifts
+  has_many :employee_preferences
+  has_many :preferences, through: :employee_preferences
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |employee|
