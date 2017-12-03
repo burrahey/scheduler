@@ -31,37 +31,37 @@ end
 Preference.create(
   :day => 'monday',
   :allow => false,
-  :desc => "Can't work Mondays"
+  :desc => "can't work Mondays"
 )
 
 Preference.create(
   :day => 'tuesday',
   :allow => false,
-  :desc => "Can't work Tuesdays"
+  :desc => "can't work Tuesdays"
 )
 
 Preference.create(
   :day => 'wednesday',
   :allow => false,
-  :desc => "Can't work Wednesdays"
+  :desc => "can't work Wednesdays"
 )
 Preference.create(
   :day => 'thursday',
   :allow => false,
-  :desc => "Can't work Thursdays"
+  :desc => "can't work Thursdays"
 )
 Preference.create(
   :day => 'friday',
   :allow => false,
-  :desc => "Can't work Fridays"
+  :desc => "can't work Fridays"
 )
 Preference.create(
   :day => 'saturday',
   :allow => false,
-  :desc => "Can't work Saturdays"
+  :desc => "can't work Saturdays"
 )
 Preference.create(
   :day => 'sunday',
   :allow => false,
-  :desc => "Can't work Sundays"
+  :desc => "can't work Sundays"
 )

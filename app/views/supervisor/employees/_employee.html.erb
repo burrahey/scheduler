@@ -2,13 +2,21 @@
   <strong>Name: <%= employee.first_name %> <%= employee.last_name %></strong>
   <ul>
     <li>
-      <strong>Email: </strong><%= employee.email %>
+      <strong> Email: </strong><%= employee.email %>
     </li>
     <li>
-      <strong>Date Hired: </strong><%= employee.date_hired.strftime("%B %e, %Y") %>
+      <strong> Date Hired: </strong><%= employee.date_hired.strftime("%B %e, %Y") %>
     </li>
     <li>
-      <strong>Role: </strong><%= employee.role %>
+      <strong> Role: </strong><%= employee.role %>
+    </li>
+    <li>
+      <strong> Preferences:</strong>
+      <% if employee.preferences.empty? %>
+        None
+      <% else %>
+        <%= employee.preferences.map{|pref| pref.desc}.join(",") %>
+      <% end %>
     </li>
   </ul>
   <%= link_to "View", supervisor_employee_path(employee) %> | <%= link_to "View Existing Shifts", supervisor_employee_shifts_path(employee) %>
