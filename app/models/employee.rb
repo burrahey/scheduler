@@ -23,17 +23,6 @@ class Employee < ApplicationRecord
       employee.date_hired = DateTime.now
     end
   end
-  #
-  # def self.new_from_params(employee_params)
-  #   self.new.tap do |employee|
-  #     employee.first_name = employee_params[:first_name]
-  #     employee.last_name = employee_params[:last_name]
-  #     employee.email = employee_params[:email]
-  #     employee.date_hired = employee_params[:date_hired]
-  #     employee.role = employee_params[:role]
-  #     employee.password = employee_params[:password]
-  #   end
-  # end
 
   def shift_attributes=(shift_params)
     self.shifts.build(shift_params).tap do |shift|
@@ -42,21 +31,11 @@ class Employee < ApplicationRecord
   end
 
   def preferences_attributes=(preferences_attributes)
-  preferences_attributes.values.each do |preferences_attribute|
-    preference = Preference.find_or_create_by(preferences_attribute)
+  preferences_attributes.values.each do |preference_attribute|
+    preference = Preference.find_or_create_by(preference_attribute)
     self.preferences << preference if preference.valid?
   end
 end
-
-  def update_from_params(employee_params)
-    self.first_name = employee_params[:first_name]
-    self.last_name = employee_params[:last_name]
-    self.email = employee_params[:email]
-    self.date_hired = employee_params[:date_hired]
-    self.role = employee_params[:role]
-    self.password = employee_params[:password] if !employee_params[:password].blank?
-    self
-  end
 
 
 end

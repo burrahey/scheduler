@@ -9,14 +9,15 @@ class Supervisor::EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
+    @preference = @employee.preferences.build
   end
 
   def create
     @employee = Employee.new(employee_params)
-    binding.pry
     if @employee.save
       redirect_to supervisor_employee_url(@employee)
     else
+      @preference = @employee.preferences.build
       render 'supervisor/employees/new'
     end
   end
@@ -33,7 +34,7 @@ class Supervisor::EmployeesController < ApplicationController
   end
 
   def update
-    @employee.update_from_params(employee_params)
+    @employee.assign_attributes(employee_params)
     if @employee.save
       redirect_to supervisor_employee_path(@employee)
     else
