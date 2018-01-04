@@ -14,7 +14,7 @@ class Supervisor::ShiftsController < ApplicationController
   end
 
   def create
-    @shift = Shift.build_and_assign_schedule(shift_params, @employee.id)
+    @shift = Shift.build_and_assign_employee(shift_params, @employee.id)
 
     if @shift.save
       redirect_to schedule_path(@shift.schedule)

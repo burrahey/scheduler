@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-  before_action :set_schedule, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_schedule, only: [:new, :edit, :update, :destroy]
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
   before_action :require_login, :require_supervisor
 
@@ -8,10 +8,9 @@ class ShiftsController < ApplicationController
   end
 
   def create
-    @shift = Shift.new(shift_params)
-    @shift.schedule = @schedule
+    @shift = Shift.build_and_assign_schedule(shift_params)
     if @shift.save
-      redirect_to schedule_path(@schedule)
+      redirect_to schedule_path(@shift.schedule)
     else
       render 'new'
     end

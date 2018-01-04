@@ -16,18 +16,27 @@ class Shift < ApplicationRecord
     end
   end
 
-  def self.build_and_assign_schedule(shift_params, employee_id=null)
+  def self.build_and_assign_employee(shift_params, employee_id=null)
     employee = Employee.find_by(id: employee_id)
-
     if employee
       shift = employee.shifts.build(shift_params)
     else
       shift = self.new(shift_params)
     end
 
-    shift.schedule = Schedule.find_by_any_date(shift.date)
+    shift.set_schedule
+    shift
+  end
 
-    return shift
+  def self.build_and_assign_schedule(shift_params)
+    shift = Shift.new(shift_params)
+    shift.set_schedule
+    shift
+  end
+
+  def set_schedule
+    self.schedule = Schedule.find_by_any_date(self.date)
+    self
   end
 
 end
