@@ -5,6 +5,11 @@ class Supervisor::EmployeesController < ApplicationController
 
   def index
     @employees = Employee.all
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @employees }
+    end
   end
 
   def new
