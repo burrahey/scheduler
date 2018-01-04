@@ -34,7 +34,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
-
+gem 'jquery-rails'
+gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

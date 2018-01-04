@@ -28,6 +28,10 @@ class SchedulesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @schedule, include: 'shifts,shifts.employee' }
+    end
   end
 
   def destroy

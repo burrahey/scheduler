@@ -1,0 +1,13 @@
+<%= form_tag(search_path, method: :post) do %>
+  <%= label_tag "date_1" %>
+  <%= date_field_tag "date_1" %>
+  <%= label_tag "date_1" %>
+  <%= date_field_tag "date_2" %>
+  <div class="submit-button">
+    <%= submit_tag "search" %>
+  </div>
+<% end %>
+
+<% @shifts.each do |shift| %>
+  <%= render partial: "shift", locals: {shift: shift} %>
+<% end %>

@@ -1,3 +1,24 @@
+<h3>MONDAY</h3>
+<div id=<%= (@schedule.start_date).to_s %>>
+
+</div>
+<h3>TUESDAY</h3>
+<div id=<%= (@schedule.start_date + 1).to_s %>>
+
+</div>
+<h3>WEDNESDAY</h3>
+<div id=<%= (@schedule.start_date + 2).to_s %>>
+
+</div>
+<h3>THURSDAY</h3>
+<div id=<%= (@schedule.start_date + 3).to_s %>>
+
+</div>
+<h3>FRIDAY</h3>
+<div id=<%= (@schedule.start_date + 4).to_s %>>
+
+</div>
+
 <h1><%= title_view_of_schedule(@schedule) %></h1>
 <h3>
   <% if !@schedule.published %>
@@ -10,3 +31,7 @@
   <%= shift.employee.first_name %> <%= shift.employee.last_name %>
   <%= render "shifts/shift", shift: shift %>
 <% end %>
+
+<!-- <%= javascript_tag do %>
+  getSchedule(<%= @schedule.id %>)
+<% end -%> -->
