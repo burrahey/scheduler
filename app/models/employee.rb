@@ -11,6 +11,7 @@ class Employee < ApplicationRecord
   has_many :schedules, through: :shifts
   has_many :employee_preferences
   has_many :preferences, through: :employee_preferences
+  # accepts_nested_attributes_for :preferences
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |employee|

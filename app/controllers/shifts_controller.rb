@@ -35,6 +35,18 @@ class ShiftsController < ApplicationController
     redirect_to schedule_path(@schedule)
   end
 
+  def index
+    @shifts = Shift.all
+  end
+
+  def search
+    date_1 = params[:date_1]
+    date_2 = params[:date_2]
+    @shifts = Shift.find_between_dates(date_1, date_2)
+
+    render 'index'
+  end
+
   private
   def set_schedule
     @schedule = Schedule.find_by(id: params[:schedule_id])

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: "schedules#home"
   devise_for :employees, :controllers => { :omniauth_callbacks => "employees/omniauth_callbacks", :registrations => 'employees/registrations', :sessions => 'employees/sessions'  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/shifts', to: 'shifts#index'
+  post '/search', to: 'shifts#search'
 
   namespace :supervisor do
     resources :employees do

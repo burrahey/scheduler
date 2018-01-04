@@ -5,6 +5,10 @@ class Shift < ApplicationRecord
   belongs_to :employee, required: false
   belongs_to :schedule
 
+  def self.find_between_dates(date_1, date_2)
+    self.where("date BETWEEN ? and ?", date_1, date_2)
+  end
+
   def start_time_before_end_time
     if start_time && end_time && start_time > end_time
       errors.add(:start_time, "must be before end time")
