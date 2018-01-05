@@ -1,17 +1,17 @@
 function Schedule(attributes){
   this.id = attributes.id;
   this.published = attributes.published;
-  this.start_date = new Date(attributes.start_date);
-  this.end_date = new Date(attributes.end_date);
+  this.start_date = moment.utc(attributes.start_date);
+  this.end_date = moment.utc(attributes.end_date);
 
   this.shifts = attributes.shifts.map(shift => new Shift(shift));
 }
 
 function Shift(attributes){
   this.id = attributes.id;
-  this.date = new Date(attributes.date);
-  this.start_time = new Date(attributes.start_time);
-  this.end_time = new Date(attributes.end_time);
+  this.date = moment.utc(attributes.date);
+  this.start_time = moment.utc(attributes.start_time);
+  this.end_time = moment.utc(attributes.end_time);
   this.published = attributes.published;
   this.employee_id = attributes.employee_id;
   this.schedule_id = attributes.schedule_id;
@@ -26,12 +26,12 @@ function Employee(attributes){
 }
 
 Schedule.prototype.displaySchedule = function(){
- $("h1#title").append("Week of " + this.start_date.toUTCString()
- + " - " + this.end_date.toUTCString());
+ $("h1#title").append("Week of " + this.start_date.format('MMM D')
+ + " - " + this.end_date.format('MMM D, YYYY'));
 
  this.shifts.forEach(function(shift){
-   shiftString = shift.start_time.toUTCString() + " " + shift.end_time.toUTCString() + " " + shift.employee.first_name
-  $("div#lol").append(shiftString);
+   shiftString = shift.start_time.format('h:mma') + " - " + shift.end_time.format('h:mma') + " " + shift.employee.first_name
+  $("div#" + shift.date.format('dddd')).append(shiftString);
  });
 };
 
