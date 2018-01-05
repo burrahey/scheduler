@@ -1,3 +1,3 @@
 class PreferenceSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :desc
 end

@@ -16,10 +16,10 @@ function Shift(attributes){
   this.employee_id = attributes.employee_id;
   this.schedule_id = attributes.schedule_id;
 
-  this.employee = new Employee(attributes.employee);
+  this.employee = new scheduleEmployee(attributes.employee);
 }
 
-function Employee(attributes){
+function scheduleEmployee(attributes){
   this.id = attributes.id;
   this.first_name = attributes.first_name;
   this.last_name = attributes.last_name;
@@ -28,30 +28,32 @@ function Employee(attributes){
 Schedule.prototype.displaySchedule = function(){
   var id = this.id;
 
- $("h1#title").append("Week of " + this.start_date.format('MMM D')
- + " - " + this.end_date.format('MMM D, YYYY'));
+   $("h1#title").append("Week of " + this.start_date.format('MMM D')
+   + " - " + this.end_date.format('MMM D, YYYY'));
 
- if(this.published){
-   var publishString = `<a rel="nofollow" data-method="post" href="/schedules/${id}/publish">Publish</a> || `
- };
+  var publishString = "";
 
- var deleteString = `<a rel="nofollow" data-method="delete" href="/schedules/${id}">Delete</a> || `;
+  if(this.published){
+     publishString += `<a rel="nofollow" data-method="post" href="/schedules/${id}/publish">Publish</a> || `
+  };
 
- var addShiftString =  `<a href="/schedules/${id}/shifts/new">Add Shift</a>`
- $("h3#header-options").append(publishString + deleteString + addShiftString);
+  var deleteString = `<a rel="nofollow" data-method="delete" href="/schedules/${id}">Delete</a> || `;
 
- this.shifts.forEach(function(shift){
-   var shiftString = shift.start_time.format('h:mma') + " - " + shift.end_time.format('h:mma') + " " + shift.employee.first_name + " " + shift.employee.last_name;
+  var addShiftString =  `<a href="/schedules/${id}/shifts/new">Add Shift</a>`
+  $("h3#header-options").append(publishString + deleteString + addShiftString);
 
-   if(shift.published){
-     shiftString += " - PUBLISHED"
-   };
+  this.shifts.forEach(function(shift){
+  var shiftString = shift.start_time.format('h:mma') + " - " + shift.end_time.format('h:mma') + " " + shift.employee.first_name + " " + shift.employee.last_name;
 
-   shiftString += " - " + `<a href="/schedules/${id}/shifts/${shift.id}/edit">EDIT</a>` + " | ";
+  if(shift.published){
+   shiftString += " - PUBLISHED"
+};
 
-   shiftString += `<a rel="nofollow" data-method="delete" href="/schedules/${id}/shifts/${shift.id}">DELETE</a>` + "<br />";
+shiftString += " - " + `<a href="/schedules/${id}/shifts/${shift.id}/edit">EDIT</a>` + " | ";
 
-  $("div#" + shift.date.format('dddd')).append(shiftString);
+shiftString += `<a rel="nofollow" data-method="delete" href="/schedules/${id}/shifts/${shift.id}">DELETE</a>` + "<br />";
+
+$("div#" + shift.date.format('dddd')).append(shiftString);
  });
 };
 
