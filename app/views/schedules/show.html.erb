@@ -1,41 +1,27 @@
-<h1 id="title"></h1>
-<div id='lol'>
-
-</div>
-
-<h3>MONDAY</h3>
-<div id="Monday">
-
-</div>
-<h3>TUESDAY</h3>
-<div id="Tuesday">
-
-</div>
-<h3>WEDNESDAY</h3>
-<div id="Wednesday">
-
-</div>
-<h3>THURSDAY</h3>
-<div id="Thursday">
-
-</div>
-<h3>FRIDAY</h3>
-<div id="Friday">>
-
-</div>
-
-<h1><%= title_view_of_schedule(@schedule) %></h1>
-<h3>
+<h3 id="header-options">
   <% if !@schedule.published %>
     <%= link_to "Publish", publish_path, method: 'post' %> ||
   <% end %>
   <%= link_to "Delete", schedule_path(@schedule), method: 'delete' %> ||
   <%= link_to "Add Shift", new_schedule_shift_path(@schedule) %>
 </h3>
-<% resource_scope(@schedule.shifts).each do |shift| %>
-  <%= shift.employee.first_name %> <%= shift.employee.last_name %>
-  <%= render "shifts/shift", shift: shift %>
-<% end %>
+
+<h1 id="title"></h1>
+<h3>MONDAY</h3>
+<div id="Monday">
+</div>
+<h3>TUESDAY</h3>
+<div id="Tuesday">
+</div>
+<h3>WEDNESDAY</h3>
+<div id="Wednesday">
+</div>
+<h3>THURSDAY</h3>
+<div id="Thursday">
+</div>
+<h3>FRIDAY</h3>
+<div id="Friday">
+</div>
 
 <%= javascript_tag do %>
   $(getSchedule(<%= @schedule.id %>));

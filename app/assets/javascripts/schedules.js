@@ -29,8 +29,24 @@ Schedule.prototype.displaySchedule = function(){
  $("h1#title").append("Week of " + this.start_date.format('MMM D')
  + " - " + this.end_date.format('MMM D, YYYY'));
 
+ var publishString = `<a rel="nofollow" data-method="post" href="/schedules/${this.id}/publish">Publish</a>`
+
+ var deleteString = `<a rel="nofollow" data-method="delete" href="/schedules/${this.id}">Delete</a>`
+
+ var addShiftString =  `<a href="/schedules/${this.id}/shifts/new">Add Shift</a>`
+ $("h3#header-options").append(publishString + " || " + deleteString + " || " + addShiftString);
+
  this.shifts.forEach(function(shift){
-   shiftString = shift.start_time.format('h:mma') + " - " + shift.end_time.format('h:mma') + " " + shift.employee.first_name + "<br>"
+   var shiftString = shift.start_time.format('h:mma') + " - " + shift.end_time.format('h:mma') + " " + shift.employee.first_name + " " + shift.employee.last_name;
+
+   if(shift.published){
+     shiftString += " - PUBLISHED - "
+   };
+
+   shiftString += `<a href="/schedules/${this.id}/shifts/${shift.id}/edit">Edit</a>` + " | ";
+
+   shiftString += `<a rel="nofollow" data-method="delete" href="/schedules/${this.id}/shifts/${shift.id}">Delete</a>` + "<br />";
+
   $("div#" + shift.date.format('dddd')).append(shiftString);
  });
 };
