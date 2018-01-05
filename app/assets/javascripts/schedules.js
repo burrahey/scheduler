@@ -30,7 +30,7 @@ Schedule.prototype.displaySchedule = function(){
  + " - " + this.end_date.format('MMM D, YYYY'));
 
  this.shifts.forEach(function(shift){
-   shiftString = shift.start_time.format('h:mma') + " - " + shift.end_time.format('h:mma') + " " + shift.employee.first_name
+   shiftString = shift.start_time.format('h:mma') + " - " + shift.end_time.format('h:mma') + " " + shift.employee.first_name + "<br>"
   $("div#" + shift.date.format('dddd')).append(shiftString);
  });
 };
