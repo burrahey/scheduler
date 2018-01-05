@@ -18,6 +18,17 @@
 <div id="Friday">
 </div>
 
+<%= render partial: "shifts/form", locals: { schedule: @schedule, shift: @schedule.shifts.build } %>
+
 <%= javascript_tag do %>
   $(getSchedule(<%= @schedule.id %>));
 <% end -%>
+
+<script type="text/javascript" charset="utf-8">
+  $( $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+      alert("we r hack3rz");
+    });
+  );
+</script>

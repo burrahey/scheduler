@@ -47,7 +47,7 @@ Schedule.prototype.displaySchedule = function(){
 
   if(shift.published){
    shiftString += " - PUBLISHED"
-};
+  };
 
 shiftString += " - " + `<a href="/schedules/${id}/shifts/${shift.id}/edit">EDIT</a>` + " | ";
 
