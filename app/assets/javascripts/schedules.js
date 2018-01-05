@@ -31,12 +31,14 @@ Schedule.prototype.displaySchedule = function(){
  $("h1#title").append("Week of " + this.start_date.format('MMM D')
  + " - " + this.end_date.format('MMM D, YYYY'));
 
- var publishString = `<a rel="nofollow" data-method="post" href="/schedules/${id}/publish">Publish</a>`
+ if(this.published){
+   var publishString = `<a rel="nofollow" data-method="post" href="/schedules/${id}/publish">Publish</a> || `
+ };
 
- var deleteString = `<a rel="nofollow" data-method="delete" href="/schedules/${id}">Delete</a>`
+ var deleteString = `<a rel="nofollow" data-method="delete" href="/schedules/${id}">Delete</a> || `;
 
  var addShiftString =  `<a href="/schedules/${id}/shifts/new">Add Shift</a>`
- $("h3#header-options").append(publishString + " || " + deleteString + " || " + addShiftString);
+ $("h3#header-options").append(publishString + deleteString + addShiftString);
 
  this.shifts.forEach(function(shift){
    var shiftString = shift.start_time.format('h:mma') + " - " + shift.end_time.format('h:mma') + " " + shift.employee.first_name + " " + shift.employee.last_name;
