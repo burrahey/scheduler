@@ -2,19 +2,19 @@
 
 <h3 id="header-options"></h3>
 
-<h3>MONDAY</h3>
+<h3>MONDAY - <%= @schedule.start_date.strftime("%b %e, %Y") %> </h3>
 <div id="Monday">
 </div>
-<h3>TUESDAY</h3>
+<h3>TUESDAY - <%= (@schedule.start_date + 1.day).strftime("%b %e, %Y") %></h3>
 <div id="Tuesday">
 </div>
-<h3>WEDNESDAY</h3>
+<h3>WEDNESDAY - <%= (@schedule.start_date + 2.days).strftime("%b %e, %Y") %></h3>
 <div id="Wednesday">
 </div>
-<h3>THURSDAY</h3>
+<h3>THURSDAY - <%= (@schedule.start_date + 3.days).strftime("%b %e, %Y") %></h3>
 <div id="Thursday">
 </div>
-<h3>FRIDAY</h3>
+<h3>FRIDAY - <%= (@schedule.start_date + 4.days).strftime("%b %e, %Y") %></h3>
 <div id="Friday">
 </div>
 
@@ -33,10 +33,7 @@
       event.preventDefault();
       var shiftDetails = this.serialize();
       var posting = $.post('/shifts', shiftDetails);
-
-      posting.done(function(newShift)){
-        debugger;
-      }
+      posting.done(function(newShift){ debugger; });
 
     });
   });

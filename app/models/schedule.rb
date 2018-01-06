@@ -42,6 +42,6 @@ class Schedule < ApplicationRecord
       end
       date = date.next_day
     end
-    self.end_date = date
+    self.end_date = date - 1.day
   end
 end

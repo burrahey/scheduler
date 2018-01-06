@@ -23,7 +23,10 @@ class ShiftsController < ApplicationController
     @shift.assign_attributes(shift_params)
 
     if @shift.save
-      redirect_to schedule_path(@shift.schedule)
+      respond_to do |format|
+        format.html { redirect_to schedule_path(@shift.schedule) }
+        format.json { render json: @schedule, include: 'shifts,shifts.employee' }
+      end
     else
       render 'shifts/edit'
     end
