@@ -31,9 +31,10 @@
   $(function () {
     $('form').submit(function(event) {
       event.preventDefault();
-      var shiftDetails = this.serialize();
-      var posting = $.post('/shifts', shiftDetails);
-      posting.done(function(newShift){ debugger; });
+      var shiftDetails = $(this).serialize();
+      var posting = $.post('/shifts', shiftDetails, function(newShift){
+        debugger;
+      }, "json");
 
     });
   });

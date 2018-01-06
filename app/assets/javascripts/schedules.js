@@ -3,7 +3,6 @@ function Schedule(attributes){
   this.published = attributes.published;
   this.start_date = moment.utc(attributes.start_date);
   this.end_date = moment.utc(attributes.end_date);
-  debugger;
   this.shifts = attributes.shifts.map(shift => new Shift(shift));
 }
 

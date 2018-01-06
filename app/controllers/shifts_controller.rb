@@ -8,9 +8,13 @@ class ShiftsController < ApplicationController
   end
 
   def create
+    binding.pry
     @shift = Shift.build_and_assign_schedule(shift_params)
     if @shift.save
-      redirect_to schedule_path(@shift.schedule)
+      respond_to do |format|
+        format.html { redirect_to schedule_path(@shift.schedule) }
+        format.json { render json: @shift }
+      end
     else
       render 'new'
     end
@@ -23,10 +27,7 @@ class ShiftsController < ApplicationController
     @shift.assign_attributes(shift_params)
 
     if @shift.save
-      respond_to do |format|
-        format.html { redirect_to schedule_path(@shift.schedule) }
-        format.json { render json: @schedule, include: 'shifts,shifts.employee' }
-      end
+      redirect_to schedule_path(@shift.schedule)
     else
       render 'shifts/edit'
     end

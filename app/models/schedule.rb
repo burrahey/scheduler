@@ -33,15 +33,14 @@ class Schedule < ApplicationRecord
   def assign_shifts
     date = self.start_date
     @employees = Employee.all
-
-    5.times do
+    (0..4).each do |i|
       @employees.each do |employee|
-        shift = self.shifts.build(date: date, start_time: Time.new(1111, 1, 1, 8, 0, 0, "-01:00"), end_time: Time.new(1111, 1, 1, 16, 0, 0, "-01:00"), published: false)
+        shift = self.shifts.build(date: date + i.day, start_time: DateTime.new(1111, 1, 1, 8, 0, 0, "-01:00"), end_time: DateTime.new(1111, 1, 1, 16, 0, 0, "-01:00"), published: false)
         shift.employee = employee
         shift.save
       end
-      date = date.next_day
     end
-    self.end_date = date - 1.day
+
+    self.end_date = date + 4.day
   end
 end
