@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-  before_action :set_schedule, only: [:new, :edit, :update, :destroy]
+  # before_action :set_schedule, only: [:new, :edit, :update, :destroy]
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
   before_action :require_login, :require_supervisor
 
@@ -47,9 +47,9 @@ class ShiftsController < ApplicationController
   end
 
   private
-  def set_schedule
-    @schedule = Schedule.find_by(id: params[:schedule_id])
-  end
+  # def set_schedule
+  #   @schedule = Schedule.find_by(id: params[:schedule_id])
+  # end
 
   def shift_params
      params.require(:shift).permit(:date, :start_time, :end_time, :published, :employee_id, :schedule_id)

@@ -1,7 +1,7 @@
-<%= form_for [:schedule, @shift] do |t| %>
+<%= form_for shift do |t| %>
   <%= t.label :employee %> <br />
   <%= t.collection_select(:employee_id, Employee.all, :id, :first_name) %>
-  <%= render "mini_form", t: t %>
+  <%= render "shifts/mini_form", t: t, shift: shift %>
   <div class="submit-button">
   <%= t.submit %>
   </div>

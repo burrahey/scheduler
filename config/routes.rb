@@ -10,9 +10,9 @@ Rails.application.routes.draw do
       resources :shifts, only: [:index, :new, :create]
     end
   end
-  resources :schedules do
-    resources :shifts, except: :show
-  end
+  resources :schedules
+  resources :shifts, except: :show
+
   post '/schedules/:id/publish', to: 'schedules#publish', as: 'publish'
   post '/supervisor/employees/associates', to: 'supervisor/employees#associates'
 end

@@ -39,7 +39,7 @@ Schedule.prototype.displaySchedule = function(){
 
   var deleteString = `<a rel="nofollow" data-method="delete" href="/schedules/${id}">Delete</a> || `;
 
-  var addShiftString =  `<a href="/schedules/${id}/shifts/new">Add Shift</a>`
+  var addShiftString =  `<a href="/shifts/new">Add Shift</a>`
   $("h3#header-options").append(publishString + deleteString + addShiftString);
 
   this.shifts.forEach(function(shift){
@@ -49,7 +49,7 @@ Schedule.prototype.displaySchedule = function(){
    shiftString += " - PUBLISHED"
   };
 
-shiftString += " - " + `<a href="/schedules/${id}/shifts/${shift.id}/edit">EDIT</a>` + " | ";
+shiftString += " - " + `<a href="/shifts/${shift.id}/edit">EDIT</a>` + " | ";
 
 shiftString += `<a rel="nofollow" data-method="delete" href="/schedules/${id}/shifts/${shift.id}">DELETE</a>` + "<br />";
 

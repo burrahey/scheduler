@@ -18,7 +18,10 @@
 <div id="Friday">
 </div>
 
-<%= render partial: "shifts/form", locals: { schedule: @schedule, shift: @schedule.shifts.build } %>
+<h3>Add a Shift:</h3>
+<div>
+  <%= render partial: "shifts/form", locals: { shift: @schedule.shifts.build } %>
+</div>
 
 <%= javascript_tag do %>
   $(getSchedule(<%= @schedule.id %>));

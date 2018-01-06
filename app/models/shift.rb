@@ -18,6 +18,7 @@ class Shift < ApplicationRecord
 
   def self.build_and_assign_employee(shift_params, employee_id=null)
     employee = Employee.find_by(id: employee_id)
+    
     if employee
       shift = employee.shifts.build(shift_params)
     else
