@@ -1,6 +1,6 @@
 <% if employee_signed_in? %>
   <div>
-    <%= link_to "Home", root_path %> | <%= link_to "View All Employees", supervisor_employees_path %> |
+    <%= link_to "Home", root_path %> | <%= link_to "View All Employees", supervisor_employees_path %> | <%= link_to "Search Shifts", shifts_path %> |
     <% if current_employee.supervisor? %>
       <%= link_to "Add a New Employee", new_supervisor_employee_path %> | <%= link_to "Manage Associates", supervisor_employees_associates_path, method: 'post' %> |
     <% end %>

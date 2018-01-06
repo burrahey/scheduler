@@ -30,12 +30,13 @@ class ShiftsController < ApplicationController
   end
 
   def destroy
+    @schedule = @shift.schedule
     @shift.destroy
     redirect_to schedule_path(@schedule)
   end
 
   def index
-    @shifts = Shift.all
+    @shifts = [];
   end
 
   def search
@@ -47,10 +48,6 @@ class ShiftsController < ApplicationController
   end
 
   private
-  # def set_schedule
-  #   @schedule = Schedule.find_by(id: params[:schedule_id])
-  # end
-
   def shift_params
      params.require(:shift).permit(:date, :start_time, :end_time, :published, :employee_id, :schedule_id)
   end

@@ -51,7 +51,7 @@ Schedule.prototype.displaySchedule = function(){
 
 shiftString += " - " + `<a href="/shifts/${shift.id}/edit">EDIT</a>` + " | ";
 
-shiftString += `<a rel="nofollow" data-method="delete" href="/schedules/${id}/shifts/${shift.id}">DELETE</a>` + "<br />";
+shiftString += `<a rel="nofollow" data-method="delete" href="/shifts/${shift.id}">DELETE</a>` + "<br />";
 
 $("div#" + shift.date.format('dddd')).append(shiftString);
  });
