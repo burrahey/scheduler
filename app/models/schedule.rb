@@ -13,7 +13,7 @@ class Schedule < ApplicationRecord
   end
 
   def self.find_by_any_date(date)
-    date.try(:to_datetime).try(:beginning_of_week)
+    date = date.try(:to_datetime).try(:beginning_of_week)
     Schedule.find_by(start_date: date)
   end
 

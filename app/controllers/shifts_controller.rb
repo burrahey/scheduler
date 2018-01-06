@@ -8,7 +8,6 @@ class ShiftsController < ApplicationController
   end
 
   def create
-    binding.pry
     @shift = Shift.build_and_assign_schedule(shift_params)
     if @shift.save
       respond_to do |format|

@@ -33,9 +33,7 @@
       event.preventDefault();
       var shiftDetails = $(this).serialize();
       var posting = $.post('/shifts', shiftDetails, function(newShift){
-        debugger;
-      }, "json");
-
+        addShift(newShift)}, "JSON");
     });
   });
 </script>
